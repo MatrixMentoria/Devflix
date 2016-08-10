@@ -11,7 +11,8 @@ namespace ProjetoFinalWeb.Controllers
 {
     public class FilmesController : Controller
     {
-        public static List<FilmesModel> itens = new List<FilmesModel>();
+        //public static List<FilmesModel> itens = new List<FilmesModel>();
+        public static List<FilmesModel> itens;
 
         // GET: Teste
         public ActionResult Index()
@@ -51,8 +52,8 @@ namespace ProjetoFinalWeb.Controllers
                     json = wc.DownloadString(url);
                 }
                 var arquivoJson = JsonConvert.DeserializeObject<FilmesModel>(json);
-                //itens = new List<FilmesModel>() { arquivoJson };
-                itens.Add(arquivoJson);
+                itens = new List<FilmesModel>() { arquivoJson };
+//                itens.Add(arquivoJson);
             }
             else
             {
