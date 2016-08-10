@@ -47,12 +47,27 @@ namespace ProjetoFinalWeb.Controllers
             string url = "http://www.omdbapi.com/?t=" + nome + "&y=&plot=short&r=json";
             if (url != "")
             {
-                using (WebClient wc = new WebClient())
+                try
                 {
-                    json = wc.DownloadString(url);
+                    using (WebClient wc = new WebClient())
+                    {
+                        json = wc.DownloadString(url);
+                    }
+                    var arquivoJson = JsonConvert.DeserializeObject<FilmesModel>(json);
+                    if (arquivoJson.Response == "False")
+                    {
+                        ViewBag.Erro = "Impossivel encontrar o filme";
+                    }
+                    else
+                    {
+                        itens = new List<FilmesModel>() { arquivoJson };
+                    }
                 }
-                var arquivoJson = JsonConvert.DeserializeObject<FilmesModel>(json);
-                itens = new List<FilmesModel>() { arquivoJson };
+                catch (WebException)
+                {
+                    ViewBag.Erro = "Conexão Ruim com o Servidor...";
+                }
+
 //                itens.Add(arquivoJson);
             }
             else
