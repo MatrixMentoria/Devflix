@@ -21,11 +21,24 @@ namespace ProjetoFinalWeb
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/jquery.blueimp-gallery.min.js",
+                      "~/Scripts/touchSwipe.min.js",
+                      "~/Scripts/respond.js",
+                      "~/Scripts/wow.min.js",
+                      "~/Scripts/script.js",
+                      "~/Scripts/masonry.pkgd.js",
+                      "~/Scripts/mansory.pkgd.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                     "~/Content/bootstrap.css",
+                      "~/Content/Site.css",
+                      "~/Content/animate.css",
+                      "~/Content/blueimp-gallery.min.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/set.css",
+                      "~/Content/style.css"));
+
+            }
         }
     }
-}
