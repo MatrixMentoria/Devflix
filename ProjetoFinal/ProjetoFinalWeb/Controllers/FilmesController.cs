@@ -42,7 +42,7 @@ namespace ProjetoFinalWeb.Controllers
             string json = null;
             
             //API que retorna a collection de filmes
-            string url = "http://www.omdbapi.com/?s="+ nome +"&page=2&type=movie";
+            string url = "http://www.omdbapi.com/?s="+ nome +"&type=movie";
 
             // ------  API que retorna 1 filme apenas
             // ------  string url = "http://www.omdbapi.com/?t=" + nome + "&y=&plot=short&r=json";
