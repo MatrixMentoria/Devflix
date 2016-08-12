@@ -17,135 +17,137 @@
                 <span class="has-error">@ViewBag.Erro</span>
 
 <table class="table">
-    <tr>
-        @*<th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Year)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Released)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Runtime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Director)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Writer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Actors)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Plot)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Language)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Awards)
-            </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Poster)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Metascore)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.imdbRating)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.imdbVotes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.imdbID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Type)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Response)
-                </th>*@
-    </tr>
-</table>
-    @foreach (var item in Model)
+    @if (ViewBag.paraoErro != 1)
     {
         <tr>
-            @*<td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Year)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Rated)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Released)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Runtime)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Genre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Director)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Writer)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Actors)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Plot)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Language)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Country)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Awards)
-    </td>*@
-            <td>
-              <a href="~/Views/Filmes/DetalhesTitulo.cshtml">
-                 <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="" style="width:280px;height:450px;" class="effect-layla" />
-
-              </a>
-            </td>
-
-
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Metascore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imdbRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imdbVotes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Response)
-            </td>*@
-    
+            @*<th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.Year)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Released)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Runtime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Director)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Writer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Actors)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plot)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Language)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Awards)
+                </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Poster)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Metascore)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.imdbRating)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.imdbVotes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.imdbID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Response)
+                    </th>*@
         </tr>
-        
+        foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Released)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Runtime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Director)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Writer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Actors)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plot)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Language)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Awards)
+                    </td>*@
+                <td>
+                    <a href="~/Views/Filmes/DetalhesTitulo.cshtml">
+                        <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="" style="width:280px;height:450px;" class="effect-layla" />
+                    </a>
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Metascore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imdbRating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imdbVotes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Response)
+                    </td>*@
+            </tr>
+        }
     }
+    else
+    {
+            <img src="http://2.bp.blogspot.com/-tOpJyrrmY48/TgUrWm57CEI/AAAAAAAACxA/etyLH8JNcO0/s1600/2+Erro+404+criativo%252C+arte+e+tecnologia%252C+extens%25C3%25A3o+sala+de+artes.jpg" alt="Erro 404" />
+    }
+</table>

@@ -17,21 +17,21 @@ namespace ProjetoFinalWeb.Controllers
         // GET: Teste
         public ActionResult Index()
         {
-                                                                        /*string json = null;
-                                                                        string url2 = "http://www.omdbapi.com/?t=asdagaasfd&y=&plot=short&r=json";
-                                                                        if (url2 != "")
-                                                                        {
-                                                                            using (WebClient wc = new WebClient())
-                                                                            {
-                                                                                json = wc.DownloadString(url2);
-                                                                            }
-                                                                            var arquivoJson = JsonConvert.DeserializeObject<FilmesModel>(json);
-                                                                            itens = new List<FilmesModel>() { arquivoJson };
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            itens = new List<FilmesModel>();
-                                                                        }*/
+            /*string json = null;
+            string url2 = "http://www.omdbapi.com/?t=asdagaasfd&y=&plot=short&r=json";
+            if (url2 != "")
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    json = wc.DownloadString(url2);
+                }
+                var arquivoJson = JsonConvert.DeserializeObject<FilmesModel>(json);
+                itens = new List<FilmesModel>() { arquivoJson };
+            }
+            else
+            {
+                itens = new List<FilmesModel>();
+            }*/
             itens = new List<FilmesModel>();
             return View(itens);
         }
@@ -40,9 +40,9 @@ namespace ProjetoFinalWeb.Controllers
         public ActionResult Index(string nome)
         {
             string json = null;
-            
+
             //API que retorna a collection de filmes
-            string url = "http://www.omdbapi.com/?s="+ nome +"&type=movie";
+            string url = "http://www.omdbapi.com/?s=" + nome + "&type=movie";
 
             // ------  API que retorna 1 filme apenas
             // ------  string url = "http://www.omdbapi.com/?t=" + nome + "&y=&plot=short&r=json";
@@ -50,7 +50,8 @@ namespace ProjetoFinalWeb.Controllers
 
             //if (url != "")
             //{
-            
+            try
+            {
                 using (WebClient wc = new WebClient())
                 {
                     json = wc.DownloadString(url);
@@ -63,16 +64,25 @@ namespace ProjetoFinalWeb.Controllers
                 json = jsonEditado;
 
 
-                itens = JsonConvert.DeserializeObject<List<FilmesModel>>(json);
-           
-                //}
-                //else
-                //{
-                //    itens = new List<FilmesModel>();
-                //}
-                return View(itens);
-            
+                itens = JsonConvert.DeserializeObject<List<FilmesModel>>(json);    
+            }
+            catch(WebException)
+            {
+                ViewBag.Erro = "Conexão Indisponivel";
+            }
 
+            //}
+            //else
+            //{
+            //    itens = new List<FilmesModel>();
+            //}
+            if (itens.Any(lambda => lambda.Response == "False"))
+            {
+                ViewBag.paraoErro = 1;
+                return View();
+            }
+
+            return View(itens);
         }
     }
 }
