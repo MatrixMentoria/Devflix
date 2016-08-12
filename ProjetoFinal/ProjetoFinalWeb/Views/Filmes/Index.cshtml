@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProjetoFinalWeb.Models.FilmesModel>
 
 @{
-    ViewBag.Title = "Filmes";
+    ViewBag.Title = "Filmes"; 
 }
 
 
@@ -9,7 +9,7 @@
 
 <form method="post" action="/Filmes" class="form-inline">
     <div class="form-group">
-        <input type="text" id="nome" class="form-control" name="nome" placeholder="Digite o nome do filme..." />
+        <input type="text" id="nome" class="form-control" name="nome" placeholder="Digite o nome do filme..." required/>
     </div>
     <button type="submit" class="btn btn-default" /><span class="glyphicon glyphicon-search"></span> BUSCAR</button>
 </form>
@@ -24,7 +24,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Year)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Rated)
         </th>
         <th>
@@ -56,11 +56,11 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Awards)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Poster)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Metascore)
         </th>
         <th>
@@ -68,16 +68,16 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.imdbVotes)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.imdbID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Type)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Response)
-        </th>
+        </th>*@
     </tr>
 
     @foreach (var item in Model)
@@ -89,7 +89,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Rated)
             </td>
             <td>
@@ -121,11 +121,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Awards)
-            </td>
+            </td>*@
             <td>
                 <img src="@Html.DisplayFor(modelItem => item.Poster)" />
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Metascore)
             </td>
             <td>
@@ -133,16 +133,16 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.imdbVotes)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.imdbID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Response)
-            </td>
+            </td>*@
         </tr>
     }
 
