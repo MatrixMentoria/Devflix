@@ -66,11 +66,11 @@ namespace ProjetoFinalWeb.Controllers
 
                 itens = JsonConvert.DeserializeObject<List<FilmesModel>>(json);    
                 
-          if (itens.Any(lambda => lambda.Response == "False"))
-            {
-                ViewBag.paraoErro = 1;
-                return View();
-            }
+          if(itens.Any(lambda => String.IsNullOrEmpty(lambda.Poster)))
+                {
+                    ViewBag.paraoErro = 1;
+                    return View();
+                }
             }
             catch(WebException)
             {
