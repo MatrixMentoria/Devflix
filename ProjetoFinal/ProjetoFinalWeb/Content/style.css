@@ -1,4 +1,4 @@
-body {	color:#666;	font:300 15px/15px Roboto,Arial,Lucida;background-image:url(http://i.imgur.com/JTjy2Of.jpg);-webkit-font-smoothing:antialiased; background-position: center}
+body {	color:#666;	font:300 15px/15px Roboto,Arial,Lucida;background-image:url(https://images4.alphacoders.com/190/19098.jpg); background-repeat:no-repeat; -webkit-font-smoothing:antialiased; background-position: center}
 
 a{color:#00a9c6; text-decoration:none;}
 a:hover{color:#666;}
@@ -152,4 +152,7 @@ p{font-size:1em;line-height: 1.7em; margin-bottom: 1.7em;}
 	.grid.team div{margin: 0;padding: 0;}
 	figure.effect-chico figcaption {padding: 1.5em;}
 	.footer{margin-top: 2em;padding-bottom: 2em;}
+
+
 }
+

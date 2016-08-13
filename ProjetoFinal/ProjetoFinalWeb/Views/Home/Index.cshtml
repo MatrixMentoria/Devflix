@@ -2,10 +2,30 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    .btn-home img {
+        width: 300px;
+        height: 150px;
+        border-radius: 15%;
+        opacity: 0.8;
+        border:;
+    }
 
-    <h1>Aquarella</h1>
-   
-    <a href="http://localhost:49988/Filmes/Index">
-        <img src="~/images/button02.png" alt="" style="width:300px;height:150px;" class="glyphicon-link" />
-    </a>
+        .btn-home img:hover {
+            opacity: 1;
+        }
+
+    .mainTitle {
+        color: mistyrose;
+    }
+</style>
+
+
+<br />
+<h1 class="mainTitle">Aquarella</h1>
+
+<a href="/Filmes/Index" class="btn-home">
+    @*<img src="~/images/button02.png" alt="" class="glyphicon-link" />*@
+    <h3 class="btn btn-default">Buscar filmes</h3>
+</a>
 
