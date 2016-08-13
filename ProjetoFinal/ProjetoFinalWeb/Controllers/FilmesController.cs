@@ -65,6 +65,12 @@ namespace ProjetoFinalWeb.Controllers
 
 
                 itens = JsonConvert.DeserializeObject<List<FilmesModel>>(json);    
+                
+          if (itens.Any(lambda => lambda.Response == "False"))
+            {
+                ViewBag.paraoErro = 1;
+                return View();
+            }
             }
             catch(WebException)
             {
@@ -76,11 +82,6 @@ namespace ProjetoFinalWeb.Controllers
             //{
             //    itens = new List<FilmesModel>();
             //}
-            if (itens.Any(lambda => lambda.Response == "False"))
-            {
-                ViewBag.paraoErro = 1;
-                return View();
-            }
 
             return View(itens);
         }
