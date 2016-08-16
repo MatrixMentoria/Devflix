@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoFinalWeb", "ProjetoFinalWeb\ProjetoFinalWeb.csproj", "{C97CBAB0-D22C-48BD-99E5-DBA1F4BC6EB2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{227CBFF7-3C76-47BD-8BA9-2ABA96E87AB6}"
+	ProjectSection(SolutionItems) = preProject
+		createdb.ps1 = createdb.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
