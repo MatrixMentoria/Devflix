@@ -32,14 +32,7 @@ namespace ProjetoFinalWeb.Services
             System.Net.Http.HttpClient http = new System.Net.Http.HttpClient();
             var json = await http.GetStringAsync(url);
             var result = JObject.Parse(json);
-            bool status;
-
-            bool.TryParse(result.GetValue("Response").ToString(), out status);
-
-            if (status)
-                itens = JsonConvert.DeserializeObject<List<FilmesModel>>(result.GetValue("Search").ToString());
-            else
-                itens = new List<FilmesModel>();
+            itens = JsonConvert.DeserializeObject<List<FilmesModel>>(result.GetValue("Search").ToString());
             
             return itens;            
         }
