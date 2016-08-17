@@ -12,12 +12,12 @@ using ProjetoFinalWeb.Services;
 
 namespace ProjetoFinalWeb.Controllers
 {
-   
+
     public class FilmesController : Controller
     {
-       
+
         public ActionResult Index()
-        {   
+        {
             return View(Enumerable.Empty<FilmesModel>());
         }
 
@@ -25,7 +25,14 @@ namespace ProjetoFinalWeb.Controllers
         public async Task<ActionResult> Index(string nome)
         {
             OMDService service = new OMDService();
-            return View(await service.ObterFilmesPorNome(nome));
+
+            var result = await service.ObterFilmesPorNome(nome);
+
+            if (result.Count == 0)
+                ViewBag.Erro = string.Format("O Filme {0} não foi encontrado!", nome);
+
+            return View(result);
+
         }
     }
 }
