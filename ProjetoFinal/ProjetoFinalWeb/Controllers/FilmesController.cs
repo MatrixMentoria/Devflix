@@ -9,7 +9,6 @@ using ProjetoFinalWeb.Models;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using ProjetoFinalWeb.Services;
-
 namespace ProjetoFinalWeb.Controllers
 {
 

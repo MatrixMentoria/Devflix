@@ -40,8 +40,8 @@ namespace ProjetoFinalWeb.Services
                 itens = JsonConvert.DeserializeObject<List<FilmesModel>>(result.GetValue("Search").ToString());
             else
                 itens = new List<FilmesModel>();
-            
-            return itens;            
+
+            return itens;
         }
     }
 }
