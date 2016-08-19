@@ -1,30 +1,9 @@
-﻿@model IEnumerable<ProjetoFinalWeb.Models.FilmesModel>
+@model IEnumerable<ProjetoFinalWeb.Models.FilmesModel>
 
 @{
     ViewBag.Title = "Filmes";
+    
 }
-
-<style>
-    .label_filmes img {
-        width: 140px;
-        height: 260px;
-        margin: 10px;
-        border: solid 2px white;
-        box-shadow: rgba(0,0,0,0.8) 2px 2px;
-        -webkit-transition: width 1s, height 1s, -webkit-transform 1s; /* Safari */
-        transition: width 1s, height 1s, transform 1s;
-    }
-
-        .label_filmes img:hover {
-            width: 150px;
-            height: 270px;
-            box-shadow: rgba(0,0,0,0.4) 10px 10px;    
-        }
-
-    .mainTitle {
-        color: mistyrose;
-    }
-</style>
 
 <h2 class="mainTitle">FILMES</h2>
 
@@ -41,11 +20,24 @@
     <button type="submit" class="btn btn-default btn-sm" /><span class="glyphicon glyphicon-search"></span> BUSCAR</button>
 </form>
 
-<span class="has-error">@ViewBag.Erro</span>
-<br />
 
+@{ var erro = @ViewBag.Erro2; }
+
+@if (@erro == "SIM")
+{
+
+    <div class="conteiner_erro">
+        <p class="texto_erro">@ViewBag.Erro</p>
+        <img src="~/images/zelda.png" class="img_erro" />
+    </div>
+}
+
+
+<ul class="lista_filmes">
     @foreach (var item in Model)
     {
+        var poster = @Html.DisplayFor(modelItem => item.Poster);
+        var response = @Html.DisplayFor(modelItem => item.Response);
         //JANELAS MODAIS
         <div class="modal fade" id="@item.imdbID" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -60,9 +52,20 @@
                             <p><strong>imdbID</strong>: @Html.DisplayFor(modelItem => item.imdbID)</p>
                             <p><strong>Tipo</strong>  : @Html.DisplayFor(modelItem => item.Type)</p>
                         </div>
-                        <div>
-                            <p><img src="@Html.DisplayFor(modelItem => item.Poster)" style="float: right; width: 20%;" /></p>
-                        </div>
+
+                        @if (poster.ToString() == "N/A")
+                        {
+                            <div>
+                                <p><img src="http://compareagora.com/assets/imagens/outras/imgindisponivel.jpg" style="float: right; width: 20%;" /></p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <p><img src="@Html.DisplayFor(modelItem => item.Poster)" style="float: right; width: 20%;" /></p>
+                            </div>
+                        }
+
                         <div style="clear: both;"></div>
                     </div>
                     <div class="modal-footer">
@@ -72,11 +75,26 @@
             </div>
         </div>
 
-        
-                <a href="" class="label_filmes" data-toggle="modal" data-target="#@item.imdbID">
-                    <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="" class="effect-layla" />
-                </a>
-            
 
+        if (poster.ToString() == "N/A")
+        {
+            <li class="filmes_itens" style="background-image: url(http://compareagora.com/assets/imagens/outras/imgindisponivel.jpg);">
+                <span class="text_image"><p>@Html.DisplayFor(modelItem => item.Title)</p></span>
+                <div class="link_filmes">
+                    <a href="" data-toggle="modal" data-target="#@item.imdbID">Ver Detalhes</a>
+                </div>
+            </li>
+        }
+        else
+        {
+            <li class="filmes_itens" style="background-image:url(@Html.DisplayFor(modelItem => item.Poster));">
+                <span class="text_image"><p>@Html.DisplayFor(modelItem => item.Title)</p></span>
+                <div class="link_filmes">
+                    <a href="" data-toggle="modal" data-target="#@item.imdbID">Ver Detalhes</a>
+                </div>
+            </li>
 
+        }
     }
+</ul>
+<div style="clear: both;"></div>
