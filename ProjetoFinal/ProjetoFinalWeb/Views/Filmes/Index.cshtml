@@ -4,8 +4,12 @@
     ViewBag.Title = "Filmes";
     
 }
-
-<h2 class="mainTitle">FILMES</h2>
+<div class="svg-wrapper">
+    <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+        <rect class="shape" height="60" width="320" />
+        <div class="text">Filmes</div>
+    </svg>
+</div>
 
 <a href="/Home/Index" class="btn-home" style="position: absolute; top: 0px; right: 10px;">
     <h3 class="btn btn-default"><span class="glyphicon glyphicon-home"> Home</span></h3>
@@ -13,7 +17,7 @@
 
 <div style="clear: both;"></div>
 
-<form method="post" action="/Filmes" class="form-inline">
+<form method="post" action="/Filmes" class="form-inline"  style="margin: 40px;">
     <div class="form-group">
         <input type="text" id="nome" class="form-control" name="nome" placeholder="Digite o nome do filme..." required />
     </div>
