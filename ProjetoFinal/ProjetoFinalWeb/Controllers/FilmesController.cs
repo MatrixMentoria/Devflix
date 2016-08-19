@@ -27,9 +27,10 @@ namespace ProjetoFinalWeb.Controllers
 
             var result = await service.ObterFilmesPorNome(nome);
 
-            if (result.Count == 0)
+            if (result.Count == 0) {
                 ViewBag.Erro = string.Format("O Filme {0} não foi encontrado!", nome);
                 ViewBag.Erro2 = "SIM";
+            }
 
 
             return View(result);
