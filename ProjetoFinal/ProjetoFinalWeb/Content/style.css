@@ -61,6 +61,42 @@ body {margin: 0; padding: 0;color :#666; background-color:#222; font:300 15px/15
 .texto_erro {color: #ffffff; margin-top: 10px; font-weight: bold; text-align: center;}
 .img_erro{width: 600px; height: auto; margin: auto;}
 
+html, body {
+  background: rgb(20,20,20);
+  text-align: center;
+  height: auto;
+  background: url(http://umad.com/img/2015/11/abstract-color-wallpaper-1015-1087-hd-wallpapers.jpg) center;
+}
+.svg-wrapper {
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+   margin: 0 auto;
+  width: 320px;  
+}
+.shape {
+  stroke-dasharray: 140 540;
+  stroke-dashoffset: -474;
+  stroke-width: 8px;
+  fill: transparent;
+  stroke: #ff0000;
+  border-bottom: 5px solid black;
+  transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+.text {
+  font-family: Madonna;
+  font-size: 38px;
+  line-height: 32px;
+  letter-spacing: 8px;
+  color: #fff;
+  top: -48px;
+  position: relative;
+}
+.svg-wrapper:hover .shape {
+  stroke-width: 2px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 760;
+}
 
 a{color:#00a9c6; text-decoration:none;}
 a:hover{color:#666;}
