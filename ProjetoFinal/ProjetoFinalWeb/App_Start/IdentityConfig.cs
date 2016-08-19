@@ -51,10 +51,12 @@ namespace ProjetoFinalWeb
             };
 
             // Configure validation logic for passwords
+
+            //Precisamos mudar esse sistema de senha. Poderia ser que nem aqueles termometros...
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
                 RequireUppercase = true,

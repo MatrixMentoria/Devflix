@@ -19,6 +19,8 @@ namespace ProjetoFinalWeb.Services
     /// Eu fiz o cadastro no site pra ter uma chave
     /// ------  API que retorna 1 filme apenas
     /// ------  string url = "http://www.omdbapi.com/?t=" + nome + "&y=&plot=short&r=json";
+    /// 
+    /// Minha aplicação continuou quebrando..
     /// </summary>
     public class OMDService
     {
@@ -29,18 +31,24 @@ namespace ProjetoFinalWeb.Services
         {
             string url = string.Format(BASE_URI, nome);
 
-            System.Net.Http.HttpClient http = new System.Net.Http.HttpClient();
-            var json = await http.GetStringAsync(url);
-            var result = JObject.Parse(json);
-            bool status;
+                HttpClient http = new HttpClient();
+            try
+            {
+                var json = await http.GetStringAsync(url);
+                var result = JObject.Parse(json);
+                bool status;
 
-            bool.TryParse(result.GetValue("Response").ToString(), out status);
+                bool.TryParse(result.GetValue("Response").ToString(), out status);
 
-            if (status)
-                itens = JsonConvert.DeserializeObject<List<FilmesModel>>(result.GetValue("Search").ToString());
-            else
+                if (status)
+                    itens = JsonConvert.DeserializeObject<List<FilmesModel>>(result.GetValue("Search").ToString());
+                else
+                    itens = new List<FilmesModel>();
+            }
+            catch(WebException)
+            {
                 itens = new List<FilmesModel>();
-
+            }
             return itens;
         }
     }
