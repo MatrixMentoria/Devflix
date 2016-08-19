@@ -1,4 +1,66 @@
-body {	color:#666;	font:300 15px/15px Roboto,Arial,Lucida;background-image:url(https://images4.alphacoders.com/190/19098.jpg); background-repeat:no-repeat; -webkit-font-smoothing:antialiased; background-position: center}
+body {margin: 0; padding: 0;color :#666; background-color:#222; font:300 15px/15px Roboto,Arial,Lucida; -webkit-font-smoothing:antialiased;}
+ 
+/*GRID DE FILMES*/
+   .link_filmes {
+        background-color: dodgerblue;
+        border-radius: 10px;
+        width: 100px;
+        text-align: center;
+        margin: 5px auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+   .link_filmes a{
+        text-decoration:none;
+        color: #ffffff;
+    }
+
+   .link_filmes:hover, .link_filmes a:hover{
+        background-color: #1765b1;
+        color: #ffffff;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .lista_filmes{
+        list-style: none;
+    }
+
+    .filmes_itens{
+        width: 150px;
+        height: 240px;
+        float: left;
+        margin: 30px 10px;
+        background-size: 150px 240px;
+        
+    }
+
+    .text_image p{
+        color: #ffffff;
+        background-color: rgba(0,0,0,0.8);
+        opacity: 0;
+        text-align: center;
+        margin: auto;
+        width: 150px;
+        height: 240px;        
+        font-weight: bolder;
+    }
+
+    .filmes_itens .text_image p:hover{      
+        opacity: 1;
+        cursor: pointer;
+        -webkit-transition: 500ms;
+    }
+
+/* ERRO NA BUSCA*/
+.conteiner_erro{margin: auto; width: 600px;}
+.texto_erro {color: #ffffff; margin-top: 10px; font-weight: bold; text-align: center;}
+.img_erro{width: 600px; height: auto; margin: auto;}
+
 
 a{color:#00a9c6; text-decoration:none;}
 a:hover{color:#666;}
