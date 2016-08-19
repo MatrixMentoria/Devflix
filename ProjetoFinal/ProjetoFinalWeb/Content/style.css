@@ -1,5 +1,10 @@
-body {margin: 0; padding: 0;color :#666; background-color:#222; font:300 15px/15px Roboto,Arial,Lucida; -webkit-font-smoothing:antialiased;}
+body {margin: 0; padding: 0; color :#666; background-color:#222;  background: url(http://umad.com/img/2015/11/abstract-color-wallpaper-1015-1087-hd-wallpapers.jpg) center; font:300 15px/15px Roboto,Arial,Lucida; -webkit-font-smoothing:antialiased;}
  
+@font-face {
+    font-family: Madonna;
+    src: url(../fonts/Madonna.ttf);
+}
+
 /*GRID DE FILMES*/
    .link_filmes {
         background-color: dodgerblue;
@@ -61,12 +66,6 @@ body {margin: 0; padding: 0;color :#666; background-color:#222; font:300 15px/15
 .texto_erro {color: #ffffff; margin-top: 10px; font-weight: bold; text-align: center;}
 .img_erro{width: 600px; height: auto; margin: auto;}
 
-html, body {
-  background: rgb(20,20,20);
-  text-align: center;
-  height: auto;
-  background: url(http://umad.com/img/2015/11/abstract-color-wallpaper-1015-1087-hd-wallpapers.jpg) center;
-}
 .svg-wrapper {
   position: relative;
   top: 50%;
@@ -84,6 +83,7 @@ html, body {
   transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
 }
 .text {
+  text-align: center;
   font-family: Madonna;
   font-size: 38px;
   line-height: 32px;
@@ -96,6 +96,11 @@ html, body {
   stroke-width: 2px;
   stroke-dashoffset: 0;
   stroke-dasharray: 760;
+}
+
+.centralizar{
+    margin: auto;
+    text-align: center;
 }
 
 a{color:#00a9c6; text-decoration:none;}
