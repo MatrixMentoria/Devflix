@@ -21,7 +21,7 @@ namespace ProjetoFinalWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<PartialViewResult> Index(string nome)
+        public async Task<PartialViewResult> BuscarItens(string nome)
         {
             OMDService service = new OMDService();
 
