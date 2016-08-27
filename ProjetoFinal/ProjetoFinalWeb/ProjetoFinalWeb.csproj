@@ -308,6 +308,7 @@
     <Content Include="Views\Filmes\Index.cshtml" />
     <Content Include="Views\Filmes\_ListarFilmes.cshtml" />
     <Content Include="Views\Filmes\_Detalhes.cshtml" />
+    <Content Include="Views\Filmes\TodosDetalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -55,5 +55,15 @@ namespace ProjetoFinalWeb.Controllers
             
             return PartialView("_Detalhes", result);
         }
+
+        [HttpPost]
+        public async Task<PartialViewResult> TodosDetalhes(string nome)
+        {
+            OMDService service = new OMDService();
+
+            var result = await service.ObterFilmePorNomeComDetalhe(nome);
+
+            return PartialView("TodosDetalhes", result);
+        }
     }
 }
