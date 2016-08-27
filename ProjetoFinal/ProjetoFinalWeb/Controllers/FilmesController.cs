@@ -21,7 +21,7 @@ namespace ProjetoFinalWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Index(string nome)
+        public async Task<PartialViewResult> Index(string nome)
         {
             OMDService service = new OMDService();
 
@@ -30,7 +30,30 @@ namespace ProjetoFinalWeb.Controllers
             if (result.Count == 0) {
                 ViewBag.Erro = string.Format("O Filme {0} não foi encontrado!", nome);
             }
-            return View(result);
+            return PartialView("_ListarFilmes", result);
+        }
+        
+        public async Task<ActionResult> Buscar(string term)
+        {
+            OMDService service = new OMDService();
+
+            var result = await service.ObterFilmesPorNome(term);
+
+            if (result.Count == 0)
+            {
+                ViewBag.Erro = string.Format("O Filme {0} não foi encontrado!", term);
+            }
+            return Json(result.Select(x => new { value = x.Title, label = x.Title }), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public async Task<PartialViewResult> BuscarItem(string nome)
+        {
+            OMDService service = new OMDService();
+
+            var result = await service.ObterFilmePorNomeComDetalhe(nome);
+            
+            return PartialView("_Detalhes", result);
         }
     }
 }

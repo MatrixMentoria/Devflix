@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ProjetoFinalWeb.Models.FilmesModel>
+
+@foreach (var item in Model)
+{
+    Html.RenderPartial("_Detalhes", item);
+}

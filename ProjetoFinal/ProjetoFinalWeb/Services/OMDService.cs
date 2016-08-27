@@ -26,6 +26,24 @@ namespace ProjetoFinalWeb.Services
     {
         private List<FilmesModel> itens;
         private readonly string BASE_URI = "http://www.omdbapi.com/?s={0}&type=movie";
+        private readonly string BASE_URI_DETALHES = "http://www.omdbapi.com/?t={0}&type=movie&y=&plot=short&r=json";
+
+        public async Task<FilmesModel> ObterFilmePorNomeComDetalhe(string nome)
+        {
+            string url = string.Format(BASE_URI_DETALHES, nome);
+
+            HttpClient http = new HttpClient();
+            try
+            {
+                var json = await http.GetStringAsync(url);                
+                return  JsonConvert.DeserializeObject<FilmesModel>(json);
+                
+            }
+            catch (WebException)
+            {
+                return null;
+            }
+        }
 
         public async Task<List<FilmesModel>> ObterFilmesPorNome(string nome)
         {
