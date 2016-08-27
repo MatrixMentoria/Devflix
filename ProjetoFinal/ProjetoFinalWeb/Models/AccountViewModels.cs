@@ -81,6 +81,7 @@ namespace ProjetoFinalWeb.Models
         [Display(Name = "Senha")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage ="Campo Obrigatório")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Senha")]
         [Compare("Password", ErrorMessage = "A senha e a confirmação da mesma não conferem.")]
@@ -90,7 +91,6 @@ namespace ProjetoFinalWeb.Models
         {
             return Nome;
         }
-
     }
 
     public class ResetPasswordViewModel

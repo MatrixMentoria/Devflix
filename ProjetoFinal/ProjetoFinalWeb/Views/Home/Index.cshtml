@@ -15,3 +15,29 @@
         <h3 class="btn btn-default">Buscar filmes</h3>
     </a>
 </div>
+
+@if (!Request.IsAuthenticated)
+{
+    <div class="centralizar">
+        <a href="/Account/Register" class="btn-home" style="position: absolute; top:110px; left:1100px;" id="registerLink">
+            <h3 class="btn btn-default"><span class="glyphicon glyphicon-dashboard"> Cadastrar</span></h3>
+        </a>
+
+        <a href="/Account/Login" class="btn-home" style="position: absolute; top: 110px; right: 1100px;" id="loginLink">
+            <h3 class="btn btn-default"><span class="glyphicon glyphicon-dashboard"> Login</span></h3>
+        </a>
+    </div>
+}
+else
+{
+    <form action="/Account/LogOff" method="post" class="btn-home" style="position: absolute; top:110px; right:1100px;" id="logoutForm">
+        @Html.AntiForgeryToken()
+        <a href="javascript:document.getElementById('logoutForm').submit()">
+            <h3 class="btn btn-default"><span class="glyphicon glyphicon-dashboard"> Sair</span></h3>
+        </a>
+    </form>
+
+    <!--<a href="/Manage/Index" class="btn-home" style="position: absolute; top:110px; left:1050px;" title="Manage">
+            <h3 class="btn btn-default"><span class="glyphicon glyphicon-dashboard"> Gerenciamento de Conta</span></h3>
+    </a>-->
+}

@@ -35,5 +35,4 @@ namespace ProjetoFinalWeb.Models
         //public string imdbID { get; set; }
         //public string Type { get; set; }
     }
-
 }

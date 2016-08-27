@@ -11,6 +11,11 @@
     <h4>Concluir Cadastro</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <!--<label class="col-md-2 control-label">Insira uma foto</label>
+    <input type="file" name="img" class="form-control"/>
+    <br/>-->
+
     <div class="form-group">
         @Html.LabelFor(m => m.Nome, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
