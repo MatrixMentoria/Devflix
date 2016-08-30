@@ -2,7 +2,7 @@
 #Creates a new database using our specifications
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO')  | out-null
 
-$s = new-object ('Microsoft.SqlServer.Management.Smo.Server') 'STARK\SQLEXPRESS'
+$s = new-object ('Microsoft.SqlServer.Management.Smo.Server') '.\SQLEXPRESS'
 
 $dbname = 'ProjetoFinal'
 $loginName = 'usuario_banco'
