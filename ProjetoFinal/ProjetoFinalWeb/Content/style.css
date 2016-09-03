@@ -1,4 +1,4 @@
-body {margin: 0; padding: 0; color :#666; background-color:#222;  background: url(http://wallpaper.ultradownloads.com.br/128465_Papel-de-Parede-Campo-das-estrelas_1680x1050.jpg) center; font:300 15px/15px Roboto,Arial,Lucida; -webkit-font-smoothing:antialiased;}
+body {margin: 0; padding: 0; color :#666; background-color:#222;  background-color: gainsboro; font:300 15px/15px Roboto,Arial,Lucida; -webkit-font-smoothing:antialiased;}
  
 @font-face {
     font-family: Madonna;
@@ -88,8 +88,8 @@ body {margin: 0; padding: 0; color :#666; background-color:#222;  background: ur
   font-size: 38px;
   line-height: 32px;
   letter-spacing: 8px;
-  color: #fff;
-  top: -48px;
+  color: black;
+  top: -42px;
   position: relative;
 }
 .svg-wrapper:hover .shape {
@@ -99,9 +99,10 @@ body {margin: 0; padding: 0; color :#666; background-color:#222;  background: ur
 }
 
 .centralizar{
-    margin: auto;
-    text-align: center;
+        margin: auto;
+        text-align: center;
 }
+
 
 a{color:#00a9c6; text-decoration:none;}
 a:hover{color:#666;}

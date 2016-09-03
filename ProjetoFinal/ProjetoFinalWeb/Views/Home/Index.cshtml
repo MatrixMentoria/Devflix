@@ -4,7 +4,7 @@
 
 <div class="svg-wrapper"; style="align-items:flex-start">
     <svg height="60" width="320">
-        <rect class="shape" height="60" width="320" />
+        <rect class="shape" height="60" width="320"/>
         <div class="text">Aquarella</div>
     </svg>
 </div>
@@ -16,16 +16,18 @@
     </a>
 </div>
 
+
 @if (!Request.IsAuthenticated)
 {
     <div class="centralizar">
-        <a href="/Account/Register" class="btn-home" style="position: absolute; top:110px; left:1100px;" id="registerLink">
+        <a href="/Account/Login" class="btn-home" style="position:relative; top: -160px; left: 455px;" id="loginLink">
+            <h3 class="btn btn-default"><span class="glyphicon glyphicon-dashboard"> Login</span></h3>
+        </a>
+
+        <a href="/Account/Register" class="btn-home" style="position:relative; top:-160px; left:455px;" id="registerLink">
             <h3 class="btn btn-default"><span class="glyphicon glyphicon-dashboard"> Cadastrar</span></h3>
         </a>
 
-        <a href="/Account/Login" class="btn-home" style="position: absolute; top: 50px; left: 1100px;" id="loginLink">
-            <h3 class="btn btn-default"><span class="glyphicon glyphicon-dashboard"> Login</span></h3>
-        </a>
     </div>
 }
 else
