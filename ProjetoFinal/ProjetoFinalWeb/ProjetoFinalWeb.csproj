@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FilmesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -182,6 +183,10 @@
     <Compile Include="Migrations\201609012252518_Playlist.cs" />
     <Compile Include="Migrations\201609012252518_Playlist.Designer.cs">
       <DependentUpon>201609012252518_Playlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609031523087_UpdatePlaylistModelFields.cs" />
+    <Compile Include="Migrations\201609031523087_UpdatePlaylistModelFields.Designer.cs">
+      <DependentUpon>201609031523087_UpdatePlaylistModelFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -320,6 +325,7 @@
     <Content Include="Views\Filmes\_ListarFilmes.cshtml" />
     <Content Include="Views\Filmes\_Detalhes.cshtml" />
     <Content Include="Views\Filmes\TodosDetalhes.cshtml" />
+    <Content Include="Views\Admin\CarregarAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609012252518_Playlist.resx">
       <DependentUpon>201609012252518_Playlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609031523087_UpdatePlaylistModelFields.resx">
+      <DependentUpon>201609031523087_UpdatePlaylistModelFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

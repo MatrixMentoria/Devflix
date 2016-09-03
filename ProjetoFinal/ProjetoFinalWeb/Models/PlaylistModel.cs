@@ -10,14 +10,14 @@ namespace ProjetoFinalWeb.Models
     public class PlaylistModel
     {   
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)] // permite que crie a chave primaria no lugar da auto-geração.
-        public int Id { get; set; }
-      //  [ForeignKey] colocar como chave estrangeira
-        public string UserId { get; set; }
-        public string Nome { get; set; }
-        public bool Privada { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid PlaylistId { get; set; }
+        
+         //[ForeignKey] //colocar como chave estrangeira        
+        public string UsuarioId { get; set; }
+        public string Titulo { get; set; }
+        public bool Publica { get; set; }
         public bool Padrao { get; set; }
-
-
+        public DateTime DataCriacao { get; set; }
     }
 }
