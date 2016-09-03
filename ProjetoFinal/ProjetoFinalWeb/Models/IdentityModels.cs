@@ -26,8 +26,11 @@ namespace ProjetoFinalWeb.Models
         {
         }
 
+        DbSet<PlaylistModel> Playlist { get; set; }
+
         public static ApplicationDbContext Create()
         {
+            
             return new ApplicationDbContext();
         }
     }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using ProjetoFinalWeb.Models;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,11 @@ namespace ProjetoFinalWeb.Controllers
     {
         public ActionResult Index()
         {
+            
             return View();
         }
+
+
 
         public ActionResult About()
         {
