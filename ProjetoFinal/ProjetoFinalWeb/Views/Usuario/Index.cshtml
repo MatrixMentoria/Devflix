@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjetoFinalWeb.Models.PlaylistModel>
+
+@{
+    ViewBag.Title = "Playlists";
+}
+
+<h2>Suas Playlists</h2>
+
+<p>
+    @Html.ActionLink("Criar Nova", "CriarPlaylist")
+    <br />
+    <br />
+    <a href="/Home/Index">Voltar para o Menu</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Padrao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Padrao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCriacao)
+        </td>
+        <td>
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.PlayListId }) 
+        </td>
+    </tr>
+}
+</table>

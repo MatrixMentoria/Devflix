@@ -1,4 +1,6 @@
 ﻿@model ProjetoFinalWeb.Models.FilmesModel
+@using ProjetoFinalWeb.Models
+@using Microsoft.AspNet.Identity
 
 @{
     var poster = @Html.DisplayFor(modelModel => Model.Poster);
@@ -38,15 +40,53 @@
                         <p><img src="@Html.DisplayFor(modelModel => Model.Poster)" style="float: right; width: 20%;" /></p>
                     </div>
                 }
-
                 <div style="clear: both;"></div>
             </div>
             <div class="modal-footer">
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="dropdown">
+                        <button class="dropbtn">Adicionar a Playlist</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            @{
+                                using (var contexto = new ApplicationDbContext())
+                                {
+                                    var Email = User.Identity.GetUserName();
+                                    var pessoas = contexto.Users.First(lambda => lambda.Email == Email);
+
+                                    // #Ver depois pro mentor não reclamar <3 LINQ
+                                    var lista = contexto.Playlists.Where(lambda => lambda.UsuarioId == pessoas.Id || lambda.Titulo == "Ver depois").ToList();
+
+                                    foreach (var item in lista)
+                                    {
+                                        <a href="" onclick="AdicionarNaPlaylist('@Model.Title','@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
+                                    }
+                                }
+                            }
+
+                        </div>
+                    </div>
+                                }
+
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"> Fechar</span></button>
             </div>
         </div>
     </div>
 </div>
+
 <script>
-    $('#'+'@Model.imdbID').modal('show');
+    $('#' + '@Model.imdbID').modal('show');
+    function AdicionarNaPlaylist(title, plays, filme) {
+        $.ajax({
+            method: 'post',
+            url: '/Filmes/AdicionarNaPlaylist',
+            data: { nome: title, PlaysID: plays, imdbID: filme },
+            success: function (data) {
+                $('.modal-detalhes').html(data);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
 </script>

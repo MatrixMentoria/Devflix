@@ -1,4 +1,6 @@
 ﻿@model ProjetoFinalWeb.Models.FilmesModel
+@using ProjetoFinalWeb.Models
+@using Microsoft.AspNet.Identity
 
 @{
     var poster = @Html.DisplayFor(modelModel => Model.Poster);
@@ -15,18 +17,67 @@
         <div class="link_filmes">
             <a href="" data-toggle="modal" data-target="#@Model.imdbID">Ver Detalhes</a>
         </div>
-    </li>
-}
-else
-{
-    <li class="filmes_itens" style="background-image:url(@Html.DisplayFor(modelModel => Model.Poster));">
-        <span class="text_image"><p>@Html.DisplayFor(modelModel => Model.Title)</p></span>
-        <div class="link_filmes">
-            <a href="" onclick="abrirDetalhes('@Model.Title')" data-toggle="modal" data-target="#@Model.imdbID">Ver Detalhes</a>
-        </div>
-    </li>
+        @if (Request.IsAuthenticated)
+        {
+        <div class="dropdown">
+            <button class="dropbtn">Adicionar a Playlist</button>
+            <div id="myDropdown" class="dropdown-content">
+                @{
+                    using (var contexto = new ApplicationDbContext())
+                    {
+                        var Email = User.Identity.GetUserName();
+                        var pessoas = contexto.Users.First(lambda => lambda.Email == Email);
 
-}
+                        // #Ver depois pro mentor não reclamar <3 LINQ
+                        var lista = contexto.Playlists.Where(lambda => lambda.UsuarioId == pessoas.Id || lambda.Titulo == "Ver depois").ToList();
+
+                        foreach (var item in lista)
+                        {
+                            <a href="" onclick="AdicionarNaPlaylist('@Model.Title','@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
+                        }
+                    }
+                }
+                
+            </div>
+        </div>
+                    }
+    </li>
+                    }
+
+                    else
+                    {
+                        <li class="filmes_itens" style="background-image:url(@Html.DisplayFor(modelModel => Model.Poster));">
+                            <span class="text_image"><p>@Html.DisplayFor(modelModel => Model.Title)</p></span>
+                            <div class="link_filmes">
+                                <a href="" onclick="abrirDetalhes('@Model.Title')" data-toggle="modal" data-target="#@Model.imdbID">Ver Detalhes</a>
+                            </div>
+
+                            @if (Request.IsAuthenticated)
+                            {
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Adicionar a Playlist</button>
+                                <div id="myDropdown" class="dropdown-content">
+                    
+                                   @{
+                                       using (var contexto = new ApplicationDbContext())
+                                       {
+                                           var Email = User.Identity.GetUserName();
+                                           var pessoas = contexto.Users.First(lambda => lambda.Email == Email);
+                                           var lista = contexto.Playlists.Where(lambda => lambda.UsuarioId == pessoas.Id || lambda.Titulo == "Ver depois").ToList();
+
+                                           foreach (var item in lista)
+                                           {
+                                                    <a href="" onclick="AdicionarNaPlaylist('@Model.Title','@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
+                                           }
+                                       }
+                    }
+
+                                </div>
+                            </div>
+                                       }
+                        </li>
+                                        }
 
 <script>
     function abrirDetalhes(title) {
@@ -35,6 +86,19 @@ else
             method: 'post',
             url: '/Filmes/TodosDetalhes',
             data: 'nome='+title,
+            success: function (data) {
+                $('.modal-detalhes').html(data);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+    function AdicionarNaPlaylist(title, plays, filme) {
+        $.ajax({
+            method: 'post',
+            url: '/Filmes/AdicionarNaPlaylist',
+            data: { nome: title, PlaysID: plays, imdbID: filme },
             success: function (data) {
                 $('.modal-detalhes').html(data);
             },

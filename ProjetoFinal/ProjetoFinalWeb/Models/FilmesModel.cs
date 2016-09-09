@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -34,5 +36,10 @@ namespace ProjetoFinalWeb.Models
         public string imdbVotes { get; set; }
         public string imdbID { get; set; } //ok
         public string Type { get; set; }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid FilmesId { get; set; }
+
     }
 }

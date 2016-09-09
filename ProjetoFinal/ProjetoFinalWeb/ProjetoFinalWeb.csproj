@@ -173,6 +173,7 @@
     <Compile Include="Controllers\FilmesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,11 +189,24 @@
     <Compile Include="Migrations\201609031523087_UpdatePlaylistModelFields.Designer.cs">
       <DependentUpon>201609031523087_UpdatePlaylistModelFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609032323303_EnableAutomaticMigrations.cs" />
+    <Compile Include="Migrations\201609032323303_EnableAutomaticMigrations.Designer.cs">
+      <DependentUpon>201609032323303_EnableAutomaticMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609040406038_EnableAutomaticMigrations1.cs" />
+    <Compile Include="Migrations\201609040406038_EnableAutomaticMigrations1.Designer.cs">
+      <DependentUpon>201609040406038_EnableAutomaticMigrations1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609090128127_AddAutomaticMigration.cs" />
+    <Compile Include="Migrations\201609090128127_AddAutomaticMigration.Designer.cs">
+      <DependentUpon>201609090128127_AddAutomaticMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FilmesModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PlayListFilmesModel.cs" />
     <Compile Include="Models\PlaylistModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\OMDService.cs" />
@@ -204,6 +218,7 @@
     <Content Include="Content\blueimp-gallery.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\drop-down.css" />
     <Content Include="Content\set.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -260,6 +275,7 @@
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\drop-down.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
@@ -326,6 +342,9 @@
     <Content Include="Views\Filmes\_Detalhes.cshtml" />
     <Content Include="Views\Filmes\TodosDetalhes.cshtml" />
     <Content Include="Views\Admin\CarregarAdmin.cshtml" />
+    <Content Include="Views\Usuario\CriarPlaylist.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,6 +367,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609031523087_UpdatePlaylistModelFields.resx">
       <DependentUpon>201609031523087_UpdatePlaylistModelFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609032323303_EnableAutomaticMigrations.resx">
+      <DependentUpon>201609032323303_EnableAutomaticMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609040406038_EnableAutomaticMigrations1.resx">
+      <DependentUpon>201609040406038_EnableAutomaticMigrations1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609090128127_AddAutomaticMigration.resx">
+      <DependentUpon>201609090128127_AddAutomaticMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

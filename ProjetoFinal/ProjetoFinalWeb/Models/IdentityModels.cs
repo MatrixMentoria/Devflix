@@ -10,6 +10,7 @@ namespace ProjetoFinalWeb.Models
     public class ApplicationUser : IdentityUser
     {
         public string Nome { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -27,6 +28,8 @@ namespace ProjetoFinalWeb.Models
         }
 
         public DbSet<PlaylistModel> Playlists { get; set; }
+        public DbSet<PlayListFilmesModel> PlaylistsFilmes{ get; set; }
+        public DbSet<FilmesModel> Filmes{ get; set; }
 
         public static ApplicationDbContext Create()
         {
