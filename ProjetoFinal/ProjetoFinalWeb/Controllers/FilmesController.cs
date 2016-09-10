@@ -83,7 +83,7 @@ namespace ProjetoFinalWeb.Controllers
         private ApplicationDbContext contexto = new ApplicationDbContext();
 
 
-
+        [HttpPost]
         public async Task<ActionResult> AdicionarNaPlaylist(string nome, Guid PlaysID, string imdbID)
         {
             var service = new OMDService();
@@ -92,28 +92,25 @@ namespace ProjetoFinalWeb.Controllers
             var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var user = await userManager.FindByNameAsync(User.Identity.Name);
 
-            //Obtém o Filme.
-            var result = await service.ObterFilmePorNomeComDetalhe(nome);
-            var filme = result;
+            var filme = contexto.Filmes.FirstOrDefault(x => x.imdbID == imdbID);
 
-            //Verifica se o filme já está adicionado no banco, na tabela filmes.
-            if (!contexto.Filmes.Any(lambda => lambda.imdbID == filme.imdbID))
+            if (filme == null)
             {
+                //Obtém o Filme.
+                filme = await service.ObterFilmePorNomeComDetalhe(nome);
                 contexto.Filmes.Add(filme);
                 await contexto.SaveChangesAsync();
             }
 
-
-            var filmeID = contexto.Filmes.First(lambda => lambda.imdbID == imdbID).FilmesId;
-
             //Verificação se o filme já está contido na mesma playlist
 
-            var NehAMesmaPlaylist = !contexto.PlaylistsFilmes.Any(lambda => lambda.PlayListID == PlaysID) && contexto.PlaylistsFilmes.Any(lambda => lambda.FilmesId == filmeID);
-            var NehOMesmoFilme = !contexto.PlaylistsFilmes.Any(lambda => lambda.FilmesId == filmeID); 
+            var existsOnPlaylist = contexto.PlaylistsFilmes
+                .Any(x => x.PlayListID == PlaysID &&
+                    x.FilmesId == x.FilmesId &&
+                    x.UsuarioID == user.Id);
 
-                if (NehOMesmoFilme || NehAMesmaPlaylist)
-                {
-
+            if (!existsOnPlaylist)
+            {
                 //Rotina Principal
                 var playlist = new PlayListFilmesModel
                 {
@@ -121,49 +118,48 @@ namespace ProjetoFinalWeb.Controllers
                     FilmeTitulo = nome,
                     UsuarioID = user.Id,
                     PlayListID = PlaysID,
-                    FilmesId = filmeID
-                    };
-
-                    contexto.PlaylistsFilmes.Add(playlist);
-                    await contexto.SaveChangesAsync();
-                return RedirectToAction("BuscarItem");
-                }
-
-                else
-                {
-                    ViewBag.FilmeJaEstaContido = "Filme Já está na Playlist";
-                return RedirectToAction("BuscarItem");
+                    FilmesId = filme.FilmesId
+                };
+                contexto.PlaylistsFilmes.Add(playlist);
+                await contexto.SaveChangesAsync();
             }
+            else
+            {
+                ViewBag.FilmeJaEstaContido = "Filme Já está na Playlist";
             }
+
+            return RedirectToAction("BuscarItem");
+
         }
+    }
 
 
     //O modo antigo, só com uma playlist
 
-            /*public async Task<ActionResult> AdicionarNaPlaylist(string TituloFilme)
+    /*public async Task<ActionResult> AdicionarNaPlaylist(string TituloFilme)
+    {
+        FilmesModel filmes = new FilmesModel();
+        ApplicationUser usuario = new ApplicationUser();
+        PlaylistModel playlist = new PlaylistModel();
+
+        using (var context = new ApplicationDbContext())
+        {
+            if (!context.PlaylistsFilmes.Any(lambda => TituloFilme == lambda.FilmeTitulo))
             {
-                FilmesModel filmes = new FilmesModel();
-                ApplicationUser usuario = new ApplicationUser();
-                PlaylistModel playlist = new PlaylistModel();
-
-                using (var context = new ApplicationDbContext())
+                PlayListFilmesModel play = new PlayListFilmesModel
                 {
-                    if (!context.PlaylistsFilmes.Any(lambda => TituloFilme == lambda.FilmeTitulo))
-                    {
-                        PlayListFilmesModel play = new PlayListFilmesModel
-                        {
-                            DataInclusao = DateTime.Now,
-                            FilmeTitulo = TituloFilme,
-                            FilmeID = filmes.Id,
-                            UsuarioID = usuario.Id,
-                            PlayListID = playlist.PlaylistId
-                        };
+                    DataInclusao = DateTime.Now,
+                    FilmeTitulo = TituloFilme,
+                    FilmeID = filmes.Id,
+                    UsuarioID = usuario.Id,
+                    PlayListID = playlist.PlaylistId
+                };
 
-                        context.PlaylistsFilmes.Add(play);
-                        await context.SaveChangesAsync();
-                    }
-                    return View();
-                }
-            }*/
+                context.PlaylistsFilmes.Add(play);
+                await context.SaveChangesAsync();
+            }
+            return View();
         }
-    
+    }*/
+}
+
