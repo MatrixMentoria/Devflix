@@ -85,7 +85,7 @@ namespace ProjetoFinalWeb.Controllers
         private ApplicationDbContext contexto = new ApplicationDbContext();
 
         [HttpPost]
-        public async Task<ActionResult> AdicionarNaPlaylist(string nome, Guid PlaysID, string imdbID)
+        public async Task<ActionResult> AdicionarNaPlaylist(string filmeNome, Guid PlaysID, string imdbID)
         {
             var service = new OMDService();
 
@@ -98,7 +98,7 @@ namespace ProjetoFinalWeb.Controllers
             if (filme == null)
             {
                 //Obtém o Filme.
-                filme = await service.ObterFilmePorNomeComDetalhe(nome);
+                filme = await service.ObterFilmePorNomeComDetalhe(filmeNome);
                 contexto.Filmes.Add(filme);
                 await contexto.SaveChangesAsync();
             }
@@ -107,7 +107,7 @@ namespace ProjetoFinalWeb.Controllers
 
             var existsOnPlaylist = contexto.PlaylistsFilmes
                 .Any(x => x.PlayListID == PlaysID &&
-                    x.FilmesId == x.FilmesId &&
+                    x.FilmesId == filme.FilmesId &&
                     x.UsuarioID == user.Id);
 
             if (!existsOnPlaylist)
@@ -116,20 +116,29 @@ namespace ProjetoFinalWeb.Controllers
                 var playlist = new PlayListFilmesModel
                 {
                     DataInclusao = DateTime.Now,
-                    FilmeTitulo = nome,
+                    FilmeTitulo = filmeNome,
                     UsuarioID = user.Id,
                     PlayListID = PlaysID,
                     FilmesId = filme.FilmesId
                 };
                 contexto.PlaylistsFilmes.Add(playlist);
                 await contexto.SaveChangesAsync();
+                return Json(new
+                {
+                    Success = true,
+                    Message = string.Format("O filme {0} foi adicionado a playlist com sucesso.", filmeNome)
+
+                });
             }
             else
             {
-                ViewBag.FilmeJaEstaContido = "Filme Já está na Playlist";
-            }
+                return Json(new
+                {
+                    Success = false,
+                    Message = string.Format("O filme {0} ja foi adicionado a playlist.", filmeNome)
 
-            return RedirectToAction("BuscarItem");
+                });
+            }
         }
     }
 
