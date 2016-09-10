@@ -8,7 +8,7 @@
 }
 
 <div class="modal-detalhes"></div>
-
+<script src="~/Scripts/playlist.js"></script>
 
 @if (poster.ToString() == "N/A")
 {
@@ -33,7 +33,7 @@
 
                             foreach (var item in lista)
                             {
-                                <a href="" onclick="AdicionarNaPlaylist('@Model.Title','@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
+                                <a href="" onclick="AdicionarNaPlaylist(@Json.Encode(Model.Title),'@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
                             }
                         }
                     }
@@ -78,33 +78,3 @@
                                                 }
                             </li>
                                                 }
-
-<script>
-    function abrirDetalhes(title) {
-
-        $.ajax({
-            method: 'post',
-            url: '/Filmes/TodosDetalhes',
-            data: 'nome=' + title,
-            success: function (data) {
-                $('.modal-detalhes').html(data);
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    }
-    function AdicionarNaPlaylist(title, plays, filme) {
-        $.ajax({
-            method: 'post',
-            url: '/Filmes/AdicionarNaPlaylist',
-            data: { nome: title, PlaysID: plays, imdbID: filme },
-            success: function (data) {
-                $('.modal-detalhes').html(data);
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    }
-</script>
