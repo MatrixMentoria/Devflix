@@ -26,14 +26,20 @@ namespace ProjetoFinalWeb.Controllers
         {
             OMDService service = new OMDService();
 
-            var result = await service.ObterFilmesPorNome(nome);
+            var filmes = await service.ObterFilmesPorNome(nome);
+            var capaService = new BaixarCapaFilmeService();
 
-            if (result.Count == 0)
+            foreach (var filme in filmes)
+            {
+                await capaService.PegarCapa(filme);
+            }
+
+            if (filmes.Count == 0)
             {
                 ViewBag.Erro2 = "SIM";
                 ViewBag.Erro = string.Format("O Filme {0} não foi encontrado!", nome);
             }
-            return PartialView("_ListarFilmes", result);
+            return PartialView("_ListarFilmes", filmes);
         }
 
         public async Task<ActionResult> Buscar(string term)
@@ -58,7 +64,6 @@ namespace ProjetoFinalWeb.Controllers
             var user = await userManager.FindByNameAsync(User.Identity.Name);
             ViewBag.Usuario = user.Id;
 
-
             OMDService service = new OMDService();
 
             var result = await service.ObterFilmePorNomeComDetalhe(nome);
@@ -76,12 +81,8 @@ namespace ProjetoFinalWeb.Controllers
 
             return PartialView("TodosDetalhes", result);
         }
-
-
-
-
+        
         private ApplicationDbContext contexto = new ApplicationDbContext();
-
 
         [HttpPost]
         public async Task<ActionResult> AdicionarNaPlaylist(string nome, Guid PlaysID, string imdbID)
@@ -129,7 +130,6 @@ namespace ProjetoFinalWeb.Controllers
             }
 
             return RedirectToAction("BuscarItem");
-
         }
     }
 

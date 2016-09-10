@@ -5,6 +5,7 @@
 @{
     var poster = @Html.DisplayFor(modelModel => Model.Poster);
     var response = @Html.DisplayFor(modelModel => Model.Response);
+    var path = Url.Content("~/Content/FilmeImages");
 }
 
 <div class="modal-detalhes"></div>
@@ -46,7 +47,7 @@
 
                         else
                         {
-                            <li class="filmes_itens" style="background-image:url(@Html.DisplayFor(modelModel => Model.Poster));">
+                            <li class="filmes_itens" style="background-image:url(@string.Format("{0}/{1}.jpg",path, Model.imdbID)">
                                 <span class="text_image"><p>@Html.DisplayFor(modelModel => Model.Title)</p></span>
                                 <div class="link_filmes">
                                     <a href="" onclick="abrirDetalhes('@Model.Title')" data-toggle="modal" data-target="#@Model.imdbID">Ver Detalhes</a>
