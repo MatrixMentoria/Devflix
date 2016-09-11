@@ -7,22 +7,22 @@ body {margin: 0; padding: 0; color :#666; background-color:#222;  background-col
 
 /*GRID DE FILMES*/
    .link_filmes {
-        background-color: dodgerblue;
-        border-radius: 10px;
-        width: 100px;
-        text-align: center;
-        margin: 5px auto;
+        background-color: #fff;                
+        text-align: center;        
         padding-top: 10px;
         padding-bottom: 10px;
     }
 
    .link_filmes a{
         text-decoration:none;
-        color: #ffffff;
+        color: #ffffff;                
+        background-color: rgba(0,0,0,0.2);
     }
-
-   .link_filmes:hover, .link_filmes a:hover{
-        background-color: #1765b1;
+   .dropdown-content a{
+       color: #000 !important;  
+   }
+   .link_filmes a:hover{
+        background-color: rgba(0,0,0,0.5);
         color: #ffffff;
         -webkit-transition: all 0.3s ease-in-out;
         -moz-transition: all 0.3s ease-in-out;
@@ -35,13 +35,28 @@ body {margin: 0; padding: 0; color :#666; background-color:#222;  background-col
         list-style: none;
     }
 
-    .filmes_itens{
-        width: 150px;
-        height: 240px;
+    .filmes_itens{        
         float: left;
         margin: 30px 10px;
-        background-size: 150px 240px;
-        
+        background-size: 150px 240px;        
+        background-repeat: no-repeat;
+    }
+
+    .filme_imagem{
+        width: 150px;
+        height: 240px;
+    }
+    .filme_detalhe{        
+        display: inline-block;  
+        padding-top: 0px;
+        background-color: rgba(255,255,255,0.2);
+        color: #000;
+    }
+    .filme_detalhe a{         
+        padding: 16px;
+         /*float: left;*/
+         display: inline-block;
+         width: 50px;         
     }
 
     .text_image p{
@@ -57,8 +72,8 @@ body {margin: 0; padding: 0; color :#666; background-color:#222;  background-col
 
     .filmes_itens .text_image p:hover{      
         opacity: 1;
-        cursor: pointer;
-        -webkit-transition: 500ms;
+        cursor: pointer;        
+        -webkit-transition: 500ms;        
     }
 
 /* ERRO NA BUSCA*/

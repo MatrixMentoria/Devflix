@@ -220,6 +220,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\drop-down.css" />
+    <Content Include="Content\imgindisponivel.jpg" />
     <Content Include="Content\set.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
