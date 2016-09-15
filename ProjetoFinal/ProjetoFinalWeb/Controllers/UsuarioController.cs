@@ -26,7 +26,8 @@ namespace ProjetoFinalWeb.Controllers
                 var lista = context.Playlists.Where(lambda => lambda.UsuarioId == user.Id || lambda.Titulo == "Ver depois");
                 return View(lista);
             }
-            return View();
+
+            return View(Enumerable.Empty<PlaylistModel>());
         }
         
         
