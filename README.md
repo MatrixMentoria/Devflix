@@ -7,24 +7,24 @@
 
   * Mentores:
 
-      * Hugo Bex  -   github.com/HugoBex
-      * Jonatan Machado  -  github.com/jonatan2m
-      * Rodolfo Póvoa  -  github.com/rodpovoadev
+      * Hugo Bex  -   https://github.com/HugoBex
+      * Jonatan Machado  -  https://github.com/jonatan2m
+      * Rodolfo Póvoa  -  https://github.com/rodpovoadev
    
 * Participantes:
 
-     * Camila Esteves  -  github.com/Sqoose
-     * Gabriella Valente  -  github.com/gabriellavpais
-     * Leandro Bastardo  -  github.com/lpbastardo
-     * Matheus Arruda  -  github.com/Zeds2015
-     * Lucas Hecth  -  github.com/lucashecth
-     * Luís Gustavo Oliveira  -  github.com/gcavaco
-     * Natália Miranda  -  github.com/NataliaMiranda
-     * Pedro Pastuk  -  github.com/tukpedro
-     * Philipe Matheus  -  github.com/PhilipeMOSV
-     * Raphael Machado  -  github.com/raphacm
-     * Sandro Oliveira  -  github.com/sockadm
-     * Thamires Vasconcelos  -  github.com/Thamiresvs
+     * Camila Esteves  -  https://github.com/Sqoose
+     * Gabriella Valente  -  https://github.com/gabriellavpais
+     * Leandro Bastardo  -  https://github.com/lpbastardo
+     * Matheus Arruda  -  https://github.com/Zeds2015
+     * Lucas Hecth  -  https://github.com/lucashecth
+     * Luís Gustavo Oliveira  -  https://github.com/gcavaco
+     * Natália Miranda  -  https://github.com/NataliaMiranda
+     * Pedro Pastuk  -  https://github.com/tukpedro
+     * Philipe Matheus  -  https://github.com/PhilipeMOSV
+     * Raphael Machado  -  https://github.com/raphacm
+     * Sandro Oliveira  -  https://github.com/sockadm
+     * Thamires Vasconcelos  - https://github.com/Thamiresvs
 
 
 **Tempo de Duração do Projeto:** 4 meses.
