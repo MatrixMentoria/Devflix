@@ -46,7 +46,7 @@
                 @if (Request.IsAuthenticated)
                 {
                     <div class="dropdown">
-                        <button class="dropbtn">Adicionar a Playlist</button>
+                        <button class="dropbtn" title="Adicionar a playlist"><i class="fa fa-plus" aria-hidden="true"></i></button>
                         <div id="myDropdown" class="dropdown-content">
                             @{
                                 using (var contexto = new ApplicationDbContext())
@@ -68,7 +68,7 @@
                     </div>
                                 }
 
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"> Fechar</span></button>
+                <button type="button" title="Fechar" class="closedbutton" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i></button>
             </div>
         </div>
     </div>
@@ -76,17 +76,4 @@
 
 <script>
     $('#' + '@Model.imdbID').modal('show');
-    function AdicionarNaPlaylist(title, plays, filme) {
-        $.ajax({
-            method: 'post',
-            url: '/Filmes/AdicionarNaPlaylist',
-            data: { nome: title, PlaysID: plays, imdbID: filme },
-            success: function (data) {
-                $('.modal-detalhes').html(data);
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    }
 </script>
