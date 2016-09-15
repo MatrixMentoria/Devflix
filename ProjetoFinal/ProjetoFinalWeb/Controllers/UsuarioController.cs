@@ -34,8 +34,7 @@ namespace ProjetoFinalWeb.Controllers
         // GET: Usuario
         public ActionResult CriarPlaylist()
         {
-            PlaylistModel play = new PlaylistModel();
-            return View(play);
+            return View();
         }
 
         [HttpPost]
@@ -56,7 +55,7 @@ namespace ProjetoFinalWeb.Controllers
                 context.Playlists.Add(playlist);
                 await context.SaveChangesAsync();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
        
         public ActionResult Detalhes(Guid? id)
