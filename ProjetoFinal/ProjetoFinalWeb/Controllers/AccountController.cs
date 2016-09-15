@@ -441,7 +441,15 @@ namespace ProjetoFinalWeb.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                if (error.EndsWith("is already taken."))
+                    if (error.StartsWith("Email"))
+                        ModelState.AddModelError("Email", "Email já cadastrado!");
+                    else
+                    {
+                        //A mensagem de já cadastrado estava aparecendo duplicada, com "Name" na frente, esse
+                        //else é para não exibir a mensagem 2 vezes.
+                    }
+                else ModelState.AddModelError("", error);
             }
         }
 

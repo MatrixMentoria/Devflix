@@ -67,7 +67,7 @@ namespace ProjetoFinalWeb.Models
 
         [Required(ErrorMessage = "Campo Obrigatório")]
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Digite um nome válido")]
-        [RegularExpression(@"^([a-zA-Z_\s]+)$", ErrorMessage = "Nome Inválido")]
+        [RegularExpression("(?=^.{2,60}$)^[A-ZÁ-ÚÀ-ÙÄ-Ü][a-zá-úà-ùä-ü]+(?:[ ](?:das?|dos?|de|e|[A-ZÁ-ÚÀ-ÙÄ-Ü][a-zá-úà-ùä-ü]+))*$", ErrorMessage = "Nome Inválido!  Ex: João dos Santos")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage ="Campo Obrigatório")]

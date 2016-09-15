@@ -18,6 +18,7 @@ namespace ProjetoFinalWeb.Models
             // Add custom user claims here
             return userIdentity;
         }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -37,4 +38,6 @@ namespace ProjetoFinalWeb.Models
             return new ApplicationDbContext();
         }
     }
+
+
 }
