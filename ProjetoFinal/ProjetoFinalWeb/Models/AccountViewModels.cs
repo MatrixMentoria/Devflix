@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoFinalWeb.Models
 {
+    /// <summary>
+    /// ViewModel para confirmação de email.
+    /// </summary>
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -10,11 +13,17 @@ namespace ProjetoFinalWeb.Models
         public string Email { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel para integração com Google, Facebook, etc...
+    /// </summary>
     public class ExternalLoginListViewModel
     {
         public string ReturnUrl { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel para envio de código de confirmação.
+    /// </summary>
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }
@@ -23,6 +32,9 @@ namespace ProjetoFinalWeb.Models
         public bool RememberMe { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel para verificação do código de confirmação.
+    /// </summary>
     public class VerifyCodeViewModel
     {
         [Required]
@@ -39,6 +51,9 @@ namespace ProjetoFinalWeb.Models
         public bool RememberMe { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel para esquecimento de senha de login.
+    /// </summary>
     public class ForgotViewModel
     {
         [Required]
@@ -46,6 +61,9 @@ namespace ProjetoFinalWeb.Models
         public string Email { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel para login.
+    /// </summary>
     public class LoginViewModel
     {
         [Required(ErrorMessage = "Campo Obrigatório")]
@@ -62,6 +80,9 @@ namespace ProjetoFinalWeb.Models
         public bool RememberMe { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel para registro, cadastro de usuários. 
+    /// </summary>
     public class RegisterViewModel
     {
 
@@ -93,6 +114,9 @@ namespace ProjetoFinalWeb.Models
         }
     }
 
+    /// <summary>
+    /// ViewModel para reset/troca de senha.
+    /// </summary>
     public class ResetPasswordViewModel
     {
         [Required]
@@ -114,6 +138,9 @@ namespace ProjetoFinalWeb.Models
         public string Code { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel de esquecimento de senha.
+    /// </summary>
     public class ForgotPasswordViewModel
     {
         [Required]

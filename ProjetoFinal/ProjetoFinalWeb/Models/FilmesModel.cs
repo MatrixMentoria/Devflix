@@ -7,6 +7,9 @@ using System.Web;
 
 namespace ProjetoFinalWeb.Models
 {
+    /// <summary>
+    /// Model dos filmes que serão buscados.
+    /// </summary>
     public class FilmesModel
     {
         //public string Title { get; set; }
