@@ -1,3 +1,7 @@
+
+https://badge.waffle.io/unicariocadev/projetofinal.svg?label=in%20progress&title=In%20Progress
+https://badge.waffle.io/unicariocadev/projetofinal.svg?label=bug&title=Bug
+
 # Projeto Matrix 
  
    É um Projeto Open Source de mentoria, com uma abordagem imersiva, desafiadora e totalmente inovadora, aliada ao conceito de learn by doing, que possibilita a um grupo de 12 estudantes de TI da faculdade Unicarioca, vivenciar diversas situações do cotidiano do setor de desenvolvimento de software. É quase um simulador de uma empresa de desenvolvimento. Os participantes são, a todo o momento, estimulados a desenvolverem o mindset empreendedor, a serem criativos, proativos, práticos e estimulados a buscarem soluções inovadoras para problemas reais. Procrastinação é uma palavra que não cabe no projeto.
