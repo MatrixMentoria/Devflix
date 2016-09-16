@@ -1,6 +1,8 @@
 
-https://badge.waffle.io/unicariocadev/projetofinal.svg?label=in%20progress&title=In%20Progress
-https://badge.waffle.io/unicariocadev/projetofinal.svg?label=bug&title=Bug
+[![Waffle](https://badge.waffle.io/unicariocadev/projetofinal.svg?label=in%20progress&title=In%20Progress)](https://badge.waffle.io/unicariocadev/projetofinal)
+[![Waffle](https://badge.waffle.io/unicariocadev/projetofinal.svg?label=bug&title=Bug)](https://badge.waffle.io/unicariocadev/projetofinal)
+
+
 
 # Projeto Matrix 
  
