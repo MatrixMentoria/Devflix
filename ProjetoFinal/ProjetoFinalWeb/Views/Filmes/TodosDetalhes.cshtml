@@ -5,6 +5,10 @@
 @{
     var poster = @Html.DisplayFor(modelModel => Model.Poster);
     var response = @Html.DisplayFor(modelModel => Model.Response);
+
+    var path = Url.Content("~/Content/FilmeImages");
+
+    var urlPoster = poster.ToString() == "N/A" ? @Url.Content("~/Content/imgindisponivel.jpg") : string.Format("{0}/{1}.jpg", path, Model.imdbID);
 }
 
 <div class="modal fade" id='@Model.imdbID' role="dialog">
@@ -23,23 +27,15 @@
                     <p><strong>Runtime</strong>  : @Html.DisplayFor(modelModel => Model.Runtime)</p>
                     <p><strong>Diretor</strong>  : @Html.DisplayFor(modelModel => Model.Director)</p>
                     <p><strong>Escritores</strong>  : @Html.DisplayFor(modelModel => Model.Writer)</p>
-                    <p><strong>Elenco</strong>  : @Html.DisplayFor(modelModel => Model.Actors)</p>                   
+                    <p><strong>Elenco</strong>  : @Html.DisplayFor(modelModel => Model.Actors)</p>
                     <p><strong>Plot</strong>  : @Html.DisplayFor(modelModel => Model.Plot)</p>
 
                 </div>
 
-                @if (poster.ToString() == "N/A")
-                {
                     <div>
-                        <p><img src="http://compareagora.com/assets/imagens/outras/imgindisponivel.jpg" style="float: right; width: 20%;" /></p>
+                        <p><img src='@urlPoster' style="float: right; width: 20%;" /></p>
                     </div>
-                }
-                else
-                {
-                    <div>
-                        <p><img src="@Html.DisplayFor(modelModel => Model.Poster)" style="float: right; width: 20%;" /></p>
-                    </div>
-                }
+                
                 <div style="clear: both;"></div>
             </div>
             <div class="modal-footer">

@@ -7,35 +7,24 @@
     @Styles.Render("~/Content/css")    
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-
-
-  
 </head>
 <body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Filmes", "Index", "Filmes")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>*@
-                
-      @*@Html.Partial("_LoginPartial")*@
 
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/Home/Index" class="btn btn-primary btn-danger">
+                    <img src="https://lh3.googleusercontent.com/-i-VDeeLCKe4/V4wZJIhln0I/AAAAAAAAFFk/Y8pqHiq8tMsbul03bLPqF2hb1rVyfhiDACLcB/h120/DevflixTrans2.png" alt="" style="width:84px;height:38px;" />
+                </a>
+            </div>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />

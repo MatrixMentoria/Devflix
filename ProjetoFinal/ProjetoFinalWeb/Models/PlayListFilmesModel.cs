@@ -7,6 +7,9 @@ using System.Web;
 
 namespace ProjetoFinalWeb.Models
 {
+    /// <summary>
+    /// Model da Playlist criada pelo usuário.
+    /// </summary>
     public class PlayListFilmesModel
     {
         [Key]
