@@ -90,7 +90,7 @@ namespace ProjetoFinalWeb.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage ="Campo Obrigatório")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage ="Email Inválido. Exemplo: zezinho@hotmail.com")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

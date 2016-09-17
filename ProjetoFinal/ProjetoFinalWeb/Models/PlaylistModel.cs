@@ -20,10 +20,10 @@ namespace ProjetoFinalWeb.Models
          //[ForeignKey] //colocar como chave estrangeira        
         public string UsuarioId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Campo Obrigatório, digite o titulo de sua playlist")]
         public string Titulo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Campo Obrigatório, defina se a playlist será pública ou não")]
         public bool Publica { get; set; }
 
         public bool Padrao { get; set; }
