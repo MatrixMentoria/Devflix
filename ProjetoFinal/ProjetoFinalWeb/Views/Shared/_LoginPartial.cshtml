@@ -5,6 +5,9 @@
         {
             @Html.AntiForgeryToken()
                 <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Filmes/Index">Buscar Filmes</a></li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!--<li>
                             @Html.ActionLink("Olá", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
@@ -17,9 +20,12 @@
     else
         {
             <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Filmes/Index">Buscar Filmes</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @Html.ActionLink("Cadastrar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-                    <!--<li>@Html.ActionLink("Logar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>-->
+                    <li>@Html.ActionLink("Cadastrar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                   <li> @Html.ActionLink("Logar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                 </ul>
             </div>
     }

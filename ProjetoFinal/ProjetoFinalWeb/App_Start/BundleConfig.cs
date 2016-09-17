@@ -37,12 +37,12 @@ namespace ProjetoFinalWeb
                      "~/Content/themes/base/jquery-ui.min.css",
                      "~/Content/font-awesome.min.css",
                      "~/Content/bootstrap.css",
-                      "~/Content/Site.css",
                       "~/Content/animate.css",
                       "~/Content/blueimp-gallery.min.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/set.css",
                       "~/Content/style.css",
+                      "~/Content/Site.css",
                       "~/Content/drop-down.css",
                       "~/Content/toastr.min.css"));
 
