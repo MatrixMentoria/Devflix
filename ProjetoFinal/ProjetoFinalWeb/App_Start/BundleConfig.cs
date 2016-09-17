@@ -35,6 +35,7 @@ namespace ProjetoFinalWeb
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                      "~/Content/themes/base/jquery-ui.min.css",
+                     "~/Content/font-awesome.min.css",
                      "~/Content/bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/animate.css",
