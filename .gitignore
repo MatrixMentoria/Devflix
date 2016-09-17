@@ -252,4 +252,4 @@ paket-files/
 .idea/
 *.sln.iml
 
-Content/FilmeImages
+./Content/FilmeImages
