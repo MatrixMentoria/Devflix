@@ -8,6 +8,9 @@ using System.Web;
 
 namespace ProjetoFinalWeb.Models
 {
+    /// <summary>
+    /// Model da Playlist padrão criada pelo sistema.
+    /// </summary>
     public class PlaylistModel
     {   
         [Key]
