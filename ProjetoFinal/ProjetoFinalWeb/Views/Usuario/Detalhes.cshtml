@@ -34,6 +34,23 @@
 
     </dl>
 </div>
+
+<div id="exibirFilmesPlaylist"></div>
+
 <p>
     @Html.ActionLink("Voltar para Lista", "Index")
 </p>
+
+
+<script>
+    $.ajax({
+        method: 'post',
+        url: '/Filmes/ExibirFilmesPlaylist/' + '@Model.PlayListId',
+        success: function (data) {
+            $('#exibirFilmesPlaylist').html(data);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+</script>

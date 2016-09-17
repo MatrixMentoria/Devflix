@@ -1,4 +1,0 @@
-﻿<connectionStrings>
-<add name="DefaultConnection" connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=ProjetoFinal;User Id=usuario_banco;Password=123456_;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
-</connectionStrings>
-

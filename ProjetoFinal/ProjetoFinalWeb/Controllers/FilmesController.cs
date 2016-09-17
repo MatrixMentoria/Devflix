@@ -140,8 +140,34 @@ namespace ProjetoFinalWeb.Controllers
                 });
             }
         }
-    }
 
+        public async Task<ActionResult> ExibirFilmesPlaylist(Guid id)
+        {
+            // Recuperando Id do usuário logado
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = await userManager.FindByEmailAsync(User.Identity.Name);
+     
+            var filmesPlaylistViewModel = new List<FilmesPlaylistViewModel>();
+
+            // 
+            var result = contexto.PlaylistsFilmes.Where(x => x.UsuarioID == user.Id.ToString() && x.PlayListID == id);
+            foreach (var item in result)
+            {  
+                var filme = contexto.Filmes.FirstOrDefault(x => x.FilmesId == item.FilmesId);
+                filmesPlaylistViewModel.Add(new FilmesPlaylistViewModel
+                {
+                    ImdbId = filme.imdbID,
+                    PlayListID = item.PlayListID,
+                    FilmesId = item.FilmesId,
+                    UsuarioID = item.UsuarioID,
+                    FilmeTitulo = filme.Title,
+                    DataInclusao = item.DataInclusao,
+                });
+            }
+
+            return View(filmesPlaylistViewModel);
+        }
+    }
 
     //O modo antigo, só com uma playlist
 

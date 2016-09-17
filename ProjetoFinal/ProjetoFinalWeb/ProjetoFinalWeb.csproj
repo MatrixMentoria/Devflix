@@ -203,6 +203,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FilmesPlaylistViewModel.cs" />
     <Compile Include="Services\BaixarCapaFilmeService.cs" />
     <Compile Include="Models\FilmesModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -355,6 +356,7 @@
     <Content Include="Views\Usuario\CriarPlaylist.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Detalhes.cshtml" />
+    <Content Include="Views\Filmes\ExibirFilmesPlaylist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
