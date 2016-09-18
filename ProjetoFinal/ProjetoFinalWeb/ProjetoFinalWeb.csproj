@@ -363,6 +363,7 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Detalhes.cshtml" />
     <Content Include="Views\Filmes\ExibirFilmesPlaylist.cshtml" />
+    <Content Include="Views\Filmes\Erro404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

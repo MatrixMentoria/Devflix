@@ -36,9 +36,10 @@ namespace ProjetoFinalWeb.Controllers
 
             if (filmes.Count == 0)
             {
-                ViewBag.Erro2 = "SIM";
-                ViewBag.Erro = string.Format("O Filme {0} não foi encontrado!", nome);
+                ViewBag.Erro = string.Format("Filme {0} não encontrado", nome);
+              return PartialView("Erro404");
             }
+
             return PartialView("_ListarFilmes", filmes);
         }
 
@@ -50,9 +51,10 @@ namespace ProjetoFinalWeb.Controllers
 
             if (result.Count == 0)
             {
-                ViewBag.Erro2 = "SIM";
-                ViewBag.Erro = string.Format("O Filme {0} não foi encontrado!", term);
+                ViewBag.Erro = string.Format("Filme {0} não encontrado", term);
+                return PartialView("Erro404");
             }
+
             return Json(result.Select(x => new { value = x.Title, label = x.Title }), JsonRequestBehavior.AllowGet);
         }
 
