@@ -54,9 +54,6 @@ namespace ProjetoFinalWeb.Controllers
                     
                 }
             }
-
-
-
             return View();
         }
     }

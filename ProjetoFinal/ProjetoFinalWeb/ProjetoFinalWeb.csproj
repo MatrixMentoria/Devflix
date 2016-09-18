@@ -364,6 +364,7 @@
     <Content Include="Views\Usuario\Detalhes.cshtml" />
     <Content Include="Views\Filmes\ExibirFilmesPlaylist.cshtml" />
     <Content Include="Views\Filmes\Erro404.cshtml" />
+    <Content Include="Views\Usuario\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

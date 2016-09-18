@@ -1,0 +1,50 @@
+﻿@model ProjetoFinalWeb.Models.PlaylistModel
+
+@{
+    ViewBag.Title = Model.Titulo;
+}
+
+<h2>@Model.Titulo</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.HiddenFor(model => Model.DataCriacao)
+    @Html.HiddenFor(model => Model.PlayListId)
+    @Html.HiddenFor(model => Model.UsuarioId)
+    @Html.HiddenFor(model => Model.Padrao)
+    @Html.HiddenFor(model => Model.Titulo)
+
+    <div class="form-horizontal">
+        <h4>Editar Playlist</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Publica, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <span class="glyphicon glyphicon-check"> Publica</span>
+                    @Html.RadioButtonFor(Model => Model.Publica, true, false)
+                    <span class="glyphicon glyphicon-check"> Privada</span>
+                    @Html.RadioButtonFor(model => Model.Publica, false, false)
+                    @Html.ValidationMessageFor(model => model.Publica, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Editar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Ver Playlists Criadas", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

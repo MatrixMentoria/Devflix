@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ProjetoFinalWeb.Models.PlaylistModel>
+@using ProjetoFinalWeb.Models;
 
 @{
     ViewBag.Title = "Playlists";
@@ -11,6 +12,9 @@
     <br />
     <br />
     <a href="/Home/Index">Voltar para o Menu</a>
+    
+    @ViewBag.Erro 
+
 </p>
 <table class="table">
     <tr>
@@ -43,9 +47,20 @@
         <td>
             @Html.DisplayFor(modelItem => item.DataCriacao)
         </td>
+        
+        @if (item.Titulo != "Ver depois")
+        {
         <td>
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.PlayListId }) 
+            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.PlayListId }) |
+            @Html.ActionLink("Editar Configurações", "Editar", new { id = item.PlayListId })
         </td>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.PlayListId })
+            </td>
+        }
     </tr>
 }
 </table>

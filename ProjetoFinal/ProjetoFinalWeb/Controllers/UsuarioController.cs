@@ -52,12 +52,14 @@ namespace ProjetoFinalWeb.Controllers
                 DataCriacao = DateTime.Now,
             };
 
-                context.Playlists.Add(playlist);
+                context.Playlists.Add(playlist);            
                 await context.SaveChangesAsync();
 
                 return RedirectToAction("Index","Home");
             }
        
+
+
         public ActionResult Detalhes(Guid? id)
         {
             if(id == null)
@@ -77,34 +79,38 @@ namespace ProjetoFinalWeb.Controllers
             return View(play);
         }
 
-        /*public ActionResult Editar(Guid? id)
+
+
+        public ActionResult Editar(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PlaylistModel play = context.Playlists.Find(id);
-            if (play == null)
+
+            var playlistAtual = context.Playlists.Find(id);
+
+            if (playlistAtual == null)
             {
                 return HttpNotFound();
             }
-            return View(play);
+            return View(playlistAtual);
         }
 
 
         [HttpPost, ActionName("Editar")]
         public async  Task<ActionResult> EditarPlaylist(PlaylistModel play)
         {
-
-            try { 
-                    context.Entry(play).State = EntityState.Modified;
-                    context.SaveChanges();
-                }
-                catch (DataException)
-                {
-                    ModelState.AddModelError("", "Indisponivel para salvar  mudanças, tente novamente, e caso o problema persista entre em contato com o administrador do sistema.");
-                }
+            try
+            {
+                context.Entry(play).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+            }
+            catch(DataException)
+            {
+                ViewBag.Erro = "Não consiguimos alterar a playlist";
+            }
                 return RedirectToAction("Index");
-            }*/
+            }
     }
     }

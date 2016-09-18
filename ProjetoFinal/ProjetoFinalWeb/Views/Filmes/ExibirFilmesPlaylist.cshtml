@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<ProjetoFinalWeb.Models.FilmesPlaylistViewModel>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@{
+    Layout = null;
+ }
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ImdbId)
-        </th>
+        @*<th>
+            @Html.HiddenFor(model => model.ImdbId)
+        </th>*@
+
         <th>
             @Html.DisplayNameFor(model => model.FilmeTitulo)
         </th>
@@ -19,21 +20,16 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ImdbId)
-        </td>
+        </td>*@
+
         <td>
             @Html.DisplayFor(modelItem => item.FilmeTitulo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataInclusao)
         </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>*@
     </tr>
 }
-
 </table>

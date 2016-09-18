@@ -85,7 +85,8 @@ namespace ProjetoFinalWeb.Models
     /// </summary>
     public class RegisterViewModel
     {
-
+        //O Philipe tinha visto, e colocado o mesmo regex. Porém quando vi está parte estava faltando.
+        [RegularExpression("(?=^.{2,60}$)^[A-ZÁ-ÚÀ-ÙÄ-Ü][a-zá-úà-ùä-ü]+(?:[ ](?:das?|dos?|de|e|[A-ZÁ-ÚÀ-ÙÄ-Ü][a-zá-úà-ùä-ü]+))*$", ErrorMessage = "Nome Inválido!  Ex: João dos Santos")]
         [Required(ErrorMessage = "Campo Obrigatório")]
         public string Nome { get; set; }
 
