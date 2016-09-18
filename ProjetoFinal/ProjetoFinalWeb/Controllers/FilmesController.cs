@@ -167,7 +167,7 @@ namespace ProjetoFinalWeb.Controllers
                 });
             }
 
-            return View(filmesPlaylistViewModel);
+            return PartialView(filmesPlaylistViewModel);
         }
     }
 
