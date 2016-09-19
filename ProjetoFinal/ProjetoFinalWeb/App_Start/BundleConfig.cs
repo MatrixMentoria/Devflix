@@ -3,9 +3,15 @@ using System.Web.Optimization;
 
 namespace ProjetoFinalWeb
 {
+    /// <summary>
+    /// Classe que faz o Bundling. Otimiza e compacta arquivos CSS(style sheet) e arquivos de script.
+    /// </summary>
     public class BundleConfig
     {
-        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// Método que contém uma série de declarações, com objetivo de registrar bibliotecas e folhas de estilo CSS.
+        /// </summary>
+        /// <param name="bundles"></param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
