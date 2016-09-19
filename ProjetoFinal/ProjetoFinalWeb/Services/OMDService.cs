@@ -14,13 +14,7 @@ using System.Web.Mvc;
 namespace ProjetoFinalWeb.Services
 {
     /// <summary>
-    /// http://img.omdbapi.com/?i=tt2294629&apikey=35652245
-    /// Passar a utilizar essa chave a partir de amanhã.
-    /// Eu fiz o cadastro no site pra ter uma chave
-    /// ------  API que retorna 1 filme apenas
-    /// ------  string url = "http://www.omdbapi.com/?t=" + nome + "&y=&plot=short&r=json";
-    /// 
-    /// Minha aplicação continuou quebrando..
+    /// Classe de serviço com a chave da API OMD autorizada para buscar filmes no IMDB.
     /// </summary>
     public class OMDService
     {

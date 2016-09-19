@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace ProjetoFinalWeb.Models
 {
+    /// <summary>
+    /// Classe de serviço utilizada para baixar a capa do filme buscado e salvar no banco de dados. 
+    /// </summary>
     public class BaixarCapaFilmeService
     {
         private void GravarCapa(WebResponse response, string path)
