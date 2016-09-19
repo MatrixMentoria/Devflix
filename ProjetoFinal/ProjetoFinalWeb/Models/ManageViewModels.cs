@@ -5,6 +5,10 @@ using Microsoft.Owin.Security;
 
 namespace ProjetoFinalWeb.Models
 {
+
+    /// <summary>
+    /// ViewModel da tela inicial 
+    /// </summary>
     public class IndexViewModel
     {
         public bool HasPassword { get; set; }
@@ -14,6 +18,9 @@ namespace ProjetoFinalWeb.Models
         public bool BrowserRemembered { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel dos Logins.
+    /// </summary>
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
@@ -25,6 +32,9 @@ namespace ProjetoFinalWeb.Models
         public string Purpose { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel da criação de senha para login.
+    /// </summary>
     public class SetPasswordViewModel
     {
         [Required]
@@ -39,6 +49,9 @@ namespace ProjetoFinalWeb.Models
         public string ConfirmPassword { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel da alteração de senha.
+    /// </summary>
     public class ChangePasswordViewModel
     {
         [Required]
@@ -58,6 +71,9 @@ namespace ProjetoFinalWeb.Models
         public string ConfirmPassword { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel de adição número de telefone no cadastro de usuário.
+    /// </summary>
     public class AddPhoneNumberViewModel
     {
         [Required]
@@ -66,6 +82,9 @@ namespace ProjetoFinalWeb.Models
         public string Number { get; set; }
     }
 
+    /// <summary>
+    /// ViewModel de verificação do número do telefone.
+    /// </summary>
     public class VerifyPhoneNumberViewModel
     {
         [Required]
@@ -77,6 +96,7 @@ namespace ProjetoFinalWeb.Models
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
     }
+
 
     public class ConfigureTwoFactorViewModel
     {

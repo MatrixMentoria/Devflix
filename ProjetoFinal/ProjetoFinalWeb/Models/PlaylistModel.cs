@@ -9,7 +9,7 @@ using System.Web;
 namespace ProjetoFinalWeb.Models
 {
     /// <summary>
-    /// Model da Playlist padrão criada pelo sistema.
+    /// Model da Playlist do banco de dados.
     /// </summary>
     public class PlaylistModel
     {   

@@ -6,7 +6,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ProjetoFinalWeb.Models
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    /// <summary>
+    /// Classe de usuário, está herdando as propriedades da classe IdentityUser.
+    /// </summary>
     public class ApplicationUser : IdentityUser
     {
         public string Nome { get; set; }
@@ -21,6 +23,9 @@ namespace ProjetoFinalWeb.Models
 
     }
 
+    /// <summary>
+    /// Classe de contexto, interação de dados com objetos. 
+    /// </summary>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

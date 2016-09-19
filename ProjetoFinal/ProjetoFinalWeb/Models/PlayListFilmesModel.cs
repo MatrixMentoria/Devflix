@@ -8,7 +8,7 @@ using System.Web;
 namespace ProjetoFinalWeb.Models
 {
     /// <summary>
-    /// Model da Playlist criada pelo usuário.
+    /// Model da Playlist do banco de dados.
     /// </summary>
     public class PlayListFilmesModel
     {

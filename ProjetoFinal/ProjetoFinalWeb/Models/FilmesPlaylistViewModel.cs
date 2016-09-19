@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ProjetoFinalWeb.Models
 {
+    /// <summary>
+    /// ViweModel da criação da Playlist do usuário e inclusão de filmes.
+    /// </summary>
     public class FilmesPlaylistViewModel
     {
         public Guid id { get; set; }
