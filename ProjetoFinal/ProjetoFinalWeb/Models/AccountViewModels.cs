@@ -8,7 +8,7 @@ namespace ProjetoFinalWeb.Models
     /// </summary>
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -37,15 +37,15 @@ namespace ProjetoFinalWeb.Models
     /// </summary>
     public class VerifyCodeViewModel
     {
-        [Required]
+        [Required(ErrorMessage="Campo Obrigatório")]
         public string Provider { get; set; }
 
-        [Required]
-        [Display(Name = "Code")]
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        [Display(Name = "Código de verificação")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Deseja que o navegador se lembre da senha?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -56,7 +56,7 @@ namespace ProjetoFinalWeb.Models
     /// </summary>
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -68,7 +68,7 @@ namespace ProjetoFinalWeb.Models
     {
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Email")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage= "Insira um email válido. Exemplo: zezinho@hotmail.com")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório")]
@@ -91,7 +91,7 @@ namespace ProjetoFinalWeb.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage ="Campo Obrigatório")]
-        [EmailAddress(ErrorMessage ="Email Inválido. Exemplo: zezinho@hotmail.com")]
+        [EmailAddress(ErrorMessage ="Insira um email válido. Exemplo: zezinho@hotmail.com")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -118,20 +118,20 @@ namespace ProjetoFinalWeb.Models
     /// </summary>
     public class ResetPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        [EmailAddress(ErrorMessage="Insira um email válido.Exemplo: zezinho@hotmail.com")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        [StringLength(100, ErrorMessage = "A {0} deve conter no mínimo {2} caracteres .", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Senha")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirme a senha")]
+        [Compare("Password", ErrorMessage = "A senha e a confirmação da mesma não conferem.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -142,8 +142,8 @@ namespace ProjetoFinalWeb.Models
     /// </summary>
     public class ForgotPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        [EmailAddress(ErrorMessage= "Insira um email válido. Exemplo: zezinho@hotmail.com")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }

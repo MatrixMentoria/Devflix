@@ -44,7 +44,8 @@ namespace ProjetoFinalWeb
                       "~/Content/style.css",
                       "~/Content/Site.css",
                       "~/Content/drop-down.css",
-                      "~/Content/toastr.min.css"));
+                      "~/Content/toastr.min.css",
+                      "~/Content/Avaliacao.css"));
 
             }
         }
