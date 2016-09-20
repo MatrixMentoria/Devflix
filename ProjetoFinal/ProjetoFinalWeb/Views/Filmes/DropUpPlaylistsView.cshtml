@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ProjetoFinalWeb.Models.PlaylistModel>
+
+<div class="dropup">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Adicionar a playlist
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        @foreach (var item in Model)
+        {
+            @*<li>
+                <a href="" onclick="AdicionarNaPlaylist(@Json.Encode(item.Titulo),'@item.PlayListId','@item.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
+            </li>*@
+        }
+
+    </ul>
+</div>
+
+
+

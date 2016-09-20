@@ -12,7 +12,7 @@ using ProjetoFinalWeb.Services;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace ProjetoFinalWeb.Controllers
-{
+{   
 
     public class FilmesController : Controller
     {
@@ -169,6 +169,19 @@ namespace ProjetoFinalWeb.Controllers
 
             return PartialView(filmesPlaylistViewModel);
         }
+
+        public async Task<ActionResult> CarregarDropUpPlaylists()
+        {   
+            var usuario = contexto.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+            string DEFAULT_PLAYLIST = "Ver depois";
+
+            // #Ver depois pro mentor não reclamar <3 LINQ
+            var usuarioPlaylists = contexto.Playlists
+                .Where(x => x.UsuarioId == usuario.Id || x.Titulo == DEFAULT_PLAYLIST)
+                .ToList();
+
+            return PartialView("DropUpPlaylistsView", usuarioPlaylists);
+        } 
     }
 
     //O modo antigo, só com uma playlist

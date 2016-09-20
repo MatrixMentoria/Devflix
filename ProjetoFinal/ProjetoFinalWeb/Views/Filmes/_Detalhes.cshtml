@@ -19,12 +19,15 @@
             <div class="filme_detalhe">
                 <a href="" onclick="abrirDetalhes('@Model.Title')" data-toggle="modal" title="Ver detalhes" data-target="#@Model.imdbID"><i class="fa fa-info" aria-hidden="true"></i></a>
             </div>
-            
+
             @if (Request.IsAuthenticated)
             {
-                <div class="dropdown">
-                    <button title="Adicionar a playlist" class="dropbtn"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                    <div id="myDropdown" class="dropdown-content">
+                <div class="dropup">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Adicionar a playlist
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
                         @using (var contexto = new ApplicationDbContext())
                         {
@@ -36,13 +39,16 @@
 
                             foreach (var item in lista)
                             {
-                                <a href="" onclick="AdicionarNaPlaylist(@Json.Encode(Model.Title),'@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
+                                <li>
+                                    <a href="" onclick="AdicionarNaPlaylist(@Json.Encode(Model.Title),'@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
+                                </li>
                             }
                         }
 
-                    </div>
+                    </ul>
                 </div>
             }
         </div>
+
     </li>
 }

@@ -36,7 +36,7 @@ namespace ProjetoFinalWeb
                       "~/Scripts/script.js",
                       "~/Scripts/masonry.pkgd.js",
                       "~/Scripts/mansory.pkgd.min.js",
-                      "~/Scripts/drop-down.js",
+                      //"~/Scripts/drop-down.js",
                       "~/Scripts/toastr.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -49,7 +49,7 @@ namespace ProjetoFinalWeb
                       "~/Content/set.css",
                       "~/Content/style.css",
                       "~/Content/Site.css",
-                      "~/Content/drop-down.css",
+                      //"~/Content/drop-down.css",
                       "~/Content/toastr.min.css",
                       "~/Content/Avaliacao.css"));
 
