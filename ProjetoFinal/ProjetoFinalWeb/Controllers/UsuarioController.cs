@@ -29,8 +29,8 @@ namespace ProjetoFinalWeb.Controllers
 
             return View(Enumerable.Empty<PlaylistModel>());
         }
-        
-        
+
+
         // GET: Usuario
         public ActionResult CriarPlaylist()
         {
@@ -52,17 +52,34 @@ namespace ProjetoFinalWeb.Controllers
                 DataCriacao = DateTime.Now,
             };
 
-                context.Playlists.Add(playlist);            
-                await context.SaveChangesAsync();
+            var existPlaylist = !context.Playlists.Any(x => x.Titulo == play.Titulo);
 
-                return RedirectToAction("Index","Home");
+            if (existPlaylist)
+            {
+                context.Playlists.Add(playlist);
+                await context.SaveChangesAsync();
             }
-       
+            else
+            {
+
+                //MessageBox.Show("Playlist já existente!");
+
+                return Json(new
+                {
+                    Success = false,
+                    Message = string.Format("A Playlist {0} já existe.", play.Titulo)
+                    //ajustar com layout padrao do erro do sistema
+                });
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
 
 
         public ActionResult Detalhes(Guid? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 context.Dispose();
                 return HttpNotFound();
@@ -70,7 +87,7 @@ namespace ProjetoFinalWeb.Controllers
 
             var play = context.Playlists.Find(id);
 
-            if(play == null)
+            if (play == null)
             {
                 context.Dispose();
                 return HttpNotFound();
@@ -99,18 +116,18 @@ namespace ProjetoFinalWeb.Controllers
 
 
         [HttpPost, ActionName("Editar")]
-        public async  Task<ActionResult> EditarPlaylist(PlaylistModel play)
+        public async Task<ActionResult> EditarPlaylist(PlaylistModel play)
         {
             try
             {
                 context.Entry(play).State = EntityState.Modified;
                 await context.SaveChangesAsync();
             }
-            catch(DataException)
+            catch (DataException)
             {
                 ViewBag.Erro = "Não consiguimos alterar a playlist";
             }
-                return RedirectToAction("Index");
-            }
+            return RedirectToAction("Index");
+        }
     }
-    }
+}

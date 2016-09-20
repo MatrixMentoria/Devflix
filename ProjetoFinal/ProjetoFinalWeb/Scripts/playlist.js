@@ -32,3 +32,23 @@ function AdicionarNaPlaylist(title, plays, filme) {
         }
     });
 }
+
+function CriarPlaylist(title) {
+    $.ajax({
+        method: 'post',
+        url: '/Usuario/CriarPlaylist',
+        data: { titulo: title },
+        success: function (data) {
+            if (data.Success)
+                toastr.success(data.Message, 'Playlist adicionada com sucesso');
+            else
+                toastr.warning(data.Message, 'Playlist nao foi adicionado.');
+
+        },
+        error: function (err) {
+            console.log(err);
+            // Display an error toast, with a title
+
+        }
+    });
+}
