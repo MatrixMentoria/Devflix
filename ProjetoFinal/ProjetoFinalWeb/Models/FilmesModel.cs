@@ -39,10 +39,26 @@ namespace ProjetoFinalWeb.Models
         public string imdbVotes { get; set; }
         public string imdbID { get; set; } //ok
         public string Type { get; set; }
+        public int TotalDeAvaliacoes { get; set; }
+        public int SomaDasAvaliacoes { get; set; }
+        public int MediaAvaliacoes { get; set; }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid FilmesId { get; set; }
 
+        public void ProcessarAvaliacao(int nota)
+        {
+            if (TotalDeAvaliacoes == null)
+                TotalDeAvaliacoes = 1;
+            else
+                TotalDeAvaliacoes++;
+            SomaDasAvaliacoes = SomaDasAvaliacoes + nota;
+            MediaAvaliacoes = SomaDasAvaliacoes / TotalDeAvaliacoes;
+        }
+
+
     }
+
+
 }
