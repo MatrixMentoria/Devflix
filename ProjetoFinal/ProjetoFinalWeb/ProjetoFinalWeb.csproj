@@ -368,6 +368,7 @@
     <Content Include="Views\Filmes\Erro404.cshtml" />
     <Content Include="Views\Usuario\Editar.cshtml" />
     <Content Include="Views\Filmes\ErroFilmeNaoEncontrado.cshtml" />
+    <Content Include="Views\Usuario\ErroPlaylistExistente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

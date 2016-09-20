@@ -61,15 +61,14 @@ namespace ProjetoFinalWeb.Controllers
             }
             else
             {
-
-                //MessageBox.Show("Playlist já existente!");
-
-                return Json(new
-                {
-                    Success = false,
-                    Message = string.Format("A Playlist {0} já existe.", play.Titulo)
-                    //ajustar com layout padrao do erro do sistema
-                });
+                ViewBag.Erro = string.Format("Playlist {0} já existente!", play.Titulo);
+                return PartialView("ErroPlaylistExistente");
+                //return Json(new
+                //{
+                //    Success = false,
+                //    Message = string.Format("A Playlist {0} já existe.", play.Titulo)
+                //    //ajustar com layout padrao do erro do sistema
+                //});
 
             }
             return RedirectToAction("Index", "Home");
