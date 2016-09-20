@@ -277,6 +277,7 @@
     <Content Include="images\Button01.png" />
     <Content Include="images\button02.png" />
     <Content Include="images\colors.gif" />
+    <Content Include="images\zelda.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="connectionStrings.config.default" />
@@ -366,6 +367,7 @@
     <Content Include="Views\Filmes\ExibirFilmesPlaylist.cshtml" />
     <Content Include="Views\Filmes\Erro404.cshtml" />
     <Content Include="Views\Usuario\Editar.cshtml" />
+    <Content Include="Views\Filmes\ErroFilmeNaoEncontrado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
