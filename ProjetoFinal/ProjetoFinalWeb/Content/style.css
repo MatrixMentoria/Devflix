@@ -53,10 +53,10 @@ body {margin: 0; padding: 0; color :#666; background-color:#222;  background-col
         color: #000;
     }
     .filme_detalhe a{         
-        padding: 16px;
+        padding: 10px;
          /*float: left;*/
          display: inline-block;
-         width: 50px;         
+         width: 38px;         
     }
 
     .text_image p{

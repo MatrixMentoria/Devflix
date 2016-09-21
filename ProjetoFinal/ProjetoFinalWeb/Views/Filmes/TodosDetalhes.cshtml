@@ -7,7 +7,7 @@
     var response = @Html.DisplayFor(modelModel => Model.Response);
 
     var path = Url.Content("~/Content/FilmeImages");
-
+    var id = Guid.NewGuid();
     var urlPoster = poster.ToString() == "N/A" ? @Url.Content("~/Content/imgindisponivel.jpg") : string.Format("{0}/{1}.jpg", path, Model.imdbID);
 }
 
@@ -17,32 +17,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h2 class="modal-title">@Html.DisplayFor(modelModel => Model.Title)</h2>
-                @if (Request.IsAuthenticated)
-                {
-                    <div class="dropdown">
-                        <button class="dropbtn" title="Adicionar a playlist"><i class="fa fa-plus" aria-hidden="true"></i>Adicionar a playlist</button>
-                        <div id="myDropdown" class="dropdown-content">
-                            @{
-                                using (var contexto = new ApplicationDbContext())
-                                {
-                                    var Email = User.Identity.GetUserName();
-                                    var pessoas = contexto.Users.First(lambda => lambda.Email == Email);
-
-                                    // #Ver depois pro mentor não reclamar <3 LINQ
-                                    var lista = contexto.Playlists.Where(lambda => lambda.UsuarioId == pessoas.Id || lambda.Titulo == "Ver depois").ToList();
-
-                                    foreach (var item in lista)
-                                    {
-
-                                        <a href="" onclick="AdicionarNaPlaylist('@Model.Title','@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
-
-                                    }
-                                }
-                            }
-
-                        </div>
-                    </div>
-                                }
+               
             </div>
             <div class="modal-body">
                 <div style="width: 75%; float: left;">
@@ -77,7 +52,34 @@
 
             <div class="modal-footer">
 
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="btn-group">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="@id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @*<span class="caret"></span>*@
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="@id">
 
+                            @using (var contexto = new ApplicationDbContext())
+                            {
+                                var Email = User.Identity.GetUserName();
+                                var pessoas = contexto.Users.First(lambda => lambda.Email == Email);
+
+                                // #Ver depois pro mentor não reclamar <3 LINQ
+                                var lista = contexto.Playlists.Where(lambda => lambda.UsuarioId == pessoas.Id || lambda.Titulo == "Ver depois").ToList();
+
+                                foreach (var item in lista)
+                                {
+                                    <li>
+                                        <a href="" onclick="AdicionarNaPlaylist(@Json.Encode(Model.Title),'@item.PlayListId','@Model.imdbID')" data-toggle="modal" data-target="#@Model.imdbID">@item.Titulo</a>
+                                    </li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                }
                 <button type="button" title="Fechar" class="closedbutton" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i></button>
             </div>
         </div>

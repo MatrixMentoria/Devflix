@@ -7,12 +7,13 @@
     var response = @Html.DisplayFor(modelModel => Model.Response);
     var path = Url.Content("~/Content/FilmeImages");
 
+    var id = Guid.NewGuid();
+
     var urlPoster = poster.ToString() == "N/A" ? @Url.Content("~/Content/imgindisponivel.jpg") : string.Format("{0}/{1}.jpg", path, Model.imdbID);
 }
 
 <div class="modal-detalhes"></div>
 @{
-
     <li class="filmes_itens" style="background-image: url('@urlPoster')">
         <span class="text_image"><p>@Html.DisplayFor(modelModel => Model.Title)</p></span>
         <div class="link_filmes">
@@ -21,13 +22,13 @@
             </div>
 
             @if (Request.IsAuthenticated)
-            {
-                <div class="dropup">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Adicionar a playlist
-                        <span class="caret"></span>
+            {                             
+                <div class="btn-group">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="@id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                        
+                        @*<span class="caret"></span>*@
+                        <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <ul class="dropdown-menu" aria-labelledby="@id">
 
                         @using (var contexto = new ApplicationDbContext())
                         {
