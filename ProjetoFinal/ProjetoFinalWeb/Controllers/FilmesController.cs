@@ -14,13 +14,25 @@ using Microsoft.AspNet.Identity.Owin;
 namespace ProjetoFinalWeb.Controllers
 {   
 
+    /// <summary>
+    /// Controller dos filmes buscados no sistema.
+    /// </summary>
     public class FilmesController : Controller
     {
+        /// <summary>
+        /// Action que enumera os filmes buscados na lista FilmesModel.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View(Enumerable.Empty<FilmesModel>());
         }
 
+        /// <summary>
+        /// Método que envia uma exibição parcial do resultado da busca.
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<PartialViewResult> BuscarItens(string nome)
         {
@@ -43,6 +55,12 @@ namespace ProjetoFinalWeb.Controllers
             return PartialView("_ListarFilmes", filmes);
         }
 
+        /// <summary>
+        /// Método que busca o filme e retorna um arquivo Json
+        /// ou retorna uma mensagem de erro caso o filme não seja encontrado.
+        /// </summary>
+        /// <param name="term"></param>
+        /// <returns></returns>
         public async Task<ActionResult> Buscar(string term)
         {
             OMDService service = new OMDService();
@@ -58,7 +76,11 @@ namespace ProjetoFinalWeb.Controllers
             return Json(result.Select(x => new { value = x.Title, label = x.Title }), JsonRequestBehavior.AllowGet);
         }
 
-
+        /// <summary>
+        /// Método que retorna uma exibição partial do filme com a Pop-up Detalhes.
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<PartialViewResult> BuscarItem(string nome)
         {
@@ -73,7 +95,11 @@ namespace ProjetoFinalWeb.Controllers
             return PartialView("_Detalhes", result);
         }
 
-
+        /// <summary>
+        /// Método que retorna uma exibição partial do filme com todos os detalhes.
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<PartialViewResult> TodosDetalhes(string nome)
         {
@@ -86,6 +112,13 @@ namespace ProjetoFinalWeb.Controllers
         
         private ApplicationDbContext contexto = new ApplicationDbContext();
 
+        /// <summary>
+        /// Método para adicionar os filmes buscados na Playlist.
+        /// </summary>
+        /// <param name="filmeNome"></param>
+        /// <param name="PlaysID"></param>
+        /// <param name="imdbID"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> AdicionarNaPlaylist(string filmeNome, Guid PlaysID, string imdbID)
         {
@@ -143,6 +176,11 @@ namespace ProjetoFinalWeb.Controllers
             }
         }
 
+        /// <summary>
+        /// Método para exibir os filmes contidos na Playlist.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ActionResult> ExibirFilmesPlaylist(Guid id)
         {
             // Recuperando Id do usuário logado

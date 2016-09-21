@@ -11,13 +11,24 @@ using System.Web.Mvc;
 
 namespace ProjetoFinalWeb.Controllers
 {
+    /// <summary>
+    /// Controller da tela inicial.
+    /// </summary>
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Método da tela Home do sistema.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {       
             return View();
         }
 
+        /// <summary>
+        /// Método da tela ABout do sistema.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -25,6 +36,10 @@ namespace ProjetoFinalWeb.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Método da tela de contato do sistema.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

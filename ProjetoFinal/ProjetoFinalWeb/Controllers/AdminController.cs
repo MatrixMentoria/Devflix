@@ -9,6 +9,9 @@ using System.Web.Mvc;
 
 namespace ProjetoFinalWeb.Controllers
 {
+    /// <summary>
+    /// Controller do usuário administrador do sistema.
+    /// </summary>
     public class AdminController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -25,7 +28,10 @@ namespace ProjetoFinalWeb.Controllers
             }
         }
 
-        // GET: Admin
+        /// <summary>
+        /// Método para a criação do usuário admin passando os dados email, nome.
+        /// </summary>
+        /// <returns></returns>
         public async Task<ActionResult> CarregarAdmin()
         {
             var userAdmin = await UserManager.FindByEmailAsync("admin@admin.com");
