@@ -12,6 +12,9 @@ using ProjetoFinalWeb.Models;
 
 namespace ProjetoFinalWeb.Controllers
 {
+    /// <summary>
+    /// Controller para criação de conta no sistema.
+    /// </summary>
     [Authorize]
     public class AccountController : Controller
     {

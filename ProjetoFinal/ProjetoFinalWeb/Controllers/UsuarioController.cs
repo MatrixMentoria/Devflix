@@ -12,6 +12,9 @@ using System.Web.Mvc;
 
 namespace ProjetoFinalWeb.Controllers
 {
+    /// <summary>
+    /// Controller do usuário quando loga no sistema. Com métodos para criar e editar Playlists, visualizar detalhes.
+    /// </summary>
     public class UsuarioController : Controller
     {
         private ApplicationDbContext context = new ApplicationDbContext();
