@@ -1,4 +1,4 @@
-body {margin: 0; padding: 0; color :#666; background-color:#222;  background-color: gainsboro; font:300 15px/15px Roboto,Arial,Lucida; -webkit-font-smoothing:antialiased;}
+body {margin: 0; padding: 0; color :#666; background-color:#222;  background-color: black; font:300 15px/15px Roboto,Arial,Lucida; -webkit-font-smoothing:antialiased;}
  
 @font-face {
     font-family: Madonna;
@@ -117,6 +117,10 @@ body {margin: 0; padding: 0; color :#666; background-color:#222;  background-col
         margin: auto;
         text-align: center;
 }
+.jubotron
+.HomeButton {
+    top: 4px;
+    /*FAVOR NÃO FECHAR ESSA CLASSE EM HIPÓTESE NENHUMA!!!! Agradeçemos Muitíssimo Ass.: Hecth e Camila*/
 
 
 a{color:#00a9c6; text-decoration:none;}

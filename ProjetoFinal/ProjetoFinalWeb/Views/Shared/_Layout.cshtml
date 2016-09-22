@@ -19,18 +19,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="/Home/Index" class="btn btn-primary btn-danger">
-                    <img src="https://lh3.googleusercontent.com/-i-VDeeLCKe4/V4wZJIhln0I/AAAAAAAAFFk/Y8pqHiq8tMsbul03bLPqF2hb1rVyfhiDACLcB/h120/DevflixTrans2.png" alt="" style="width:84px;height:38px;" />
-                </a>
+                    <div class="HomeButton">
+                        <img src="https://lh3.googleusercontent.com/-i-VDeeLCKe4/V4wZJIhln0I/AAAAAAAAFFk/Y8pqHiq8tMsbul03bLPqF2hb1rVyfhiDACLcB/h120/DevflixTrans2.png" alt="" style="width:84px;height:38px;top:50px;" />
+                    </div>
+               </a>
             </div>
             @Html.Partial("_LoginPartial")
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Aquarela Filmes</p>
-        </footer>
     </div>
 
     
