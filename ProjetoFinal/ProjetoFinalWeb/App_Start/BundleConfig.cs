@@ -35,8 +35,7 @@ namespace ProjetoFinalWeb
                       "~/Scripts/wow.min.js",
                       "~/Scripts/script.js",
                       "~/Scripts/masonry.pkgd.js",
-                      "~/Scripts/mansory.pkgd.min.js",                      
-                      "~/Scripts/toastr.min.js"));
+                      "~/Scripts/mansory.pkgd.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                      "~/Content/themes/base/jquery-ui.min.css",
@@ -47,8 +46,7 @@ namespace ProjetoFinalWeb
                       "~/Content/bootstrap.min.css",
                       "~/Content/set.css",
                       "~/Content/style.css",
-                      "~/Content/Site.css",                      
-                      "~/Content/toastr.min.css"));
+                      "~/Content/Site.css"));
 
             }
         }
