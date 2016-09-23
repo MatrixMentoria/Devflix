@@ -220,6 +220,94 @@ namespace ProjetoFinalWeb.Controllers
 
             return PartialView("DropUpPlaylistsView", usuarioPlaylists);
         } 
+
+        [HttpPost]
+        public async Task<JsonResult> RatingFilme(Stars rate, string filmeId)
+        {
+            Guid id;
+            FilmesModel filme;
+
+            if(!Guid.TryParse(filmeId, out id))
+            {
+                var imdb = filmeId;
+                filme = contexto.Filmes.FirstOrDefault(x => x.imdbID == imdb);
+                if(filme == null)
+                    return Json(new { Success = false, Message = "Somente filmes adicionados a alguma playlist podem ser avaliados." });
+            }
+            else
+            {
+                filme = contexto.Filmes.FirstOrDefault(x => x.FilmesId == id);
+            }
+            id = filme.FilmesId;
+
+            //Obtém o User ID.
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = await userManager.FindByNameAsync(User.Identity.Name);
+
+            var userRating = GetFilmeRatingByUser(id, user.Id);
+            if (userRating != null)
+            {
+                return Json(new { Success = false, Rate = userRating.Rate, Message = "Você já avaliou esse filme e não é possivel realizar uma nova avaliação." });
+            }
+
+            var rating = new FilmeRating
+            {
+                UsuarioId = user.Id,
+                FilmeId = id,
+                Rate = rate,
+                DataDeAvaliacao = DateTime.Now
+            };
+
+            contexto.FilmeRatings.Add(rating);
+            await contexto.SaveChangesAsync();
+
+            var filmes = contexto.FilmeRatings.Where(x => x.FilmeId == id);
+            var ratingCount = filmes.Count();
+
+            return Json(new { Success = true, CountRating = ratingCount, Message = "O filme foi avaliado com sucesso." });
+        }
+
+        private FilmeRating GetFilmeRatingByUser(Guid filmeId, string userId)
+        {
+            return contexto.FilmeRatings.FirstOrDefault(x => x.FilmeId == filmeId && x.UsuarioId == userId);
+        }
+
+        public JsonResult GetRatingFilme(string filmeId)
+        {
+            Guid id;
+            FilmesModel filme;
+
+            if (!Guid.TryParse(filmeId, out id))
+            {
+                var imdb = filmeId;
+                filme = contexto.Filmes.FirstOrDefault(x => x.imdbID == imdb);
+                
+                if (filme == null)
+                    return Json(new { Rate = 0, Success = true, CountRating = 0 }, JsonRequestBehavior.AllowGet);
+                id = filme.FilmesId;
+            }
+            else
+            {
+                if (Guid.Empty.Equals(id))
+                {
+                    return Json(new { Rate = 0, Success = true, CountRating = 0 }, JsonRequestBehavior.AllowGet);
+                }
+            }           
+
+            var filmes = contexto.FilmeRatings.Where(x => x.FilmeId == id);
+            var ratingCount = filmes.Count();
+
+            if (ratingCount == 0)
+            {
+                return Json(new { Rate = 0, Success = true, CountRating = 0 }, JsonRequestBehavior.AllowGet);
+            }
+
+            var totalRatingValue = filmes.Sum(x => (int)x.Rate);
+            
+            int average = totalRatingValue / ratingCount;
+            
+            return Json(new { Rate = average, Success = true, CountRating = ratingCount }, JsonRequestBehavior.AllowGet);
+        }
     }
 
     //O modo antigo, só com uma playlist

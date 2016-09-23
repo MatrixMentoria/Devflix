@@ -35,8 +35,7 @@ namespace ProjetoFinalWeb
                       "~/Scripts/wow.min.js",
                       "~/Scripts/script.js",
                       "~/Scripts/masonry.pkgd.js",
-                      "~/Scripts/mansory.pkgd.min.js",
-                      //"~/Scripts/drop-down.js",
+                      "~/Scripts/mansory.pkgd.min.js",                      
                       "~/Scripts/toastr.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -48,10 +47,8 @@ namespace ProjetoFinalWeb
                       "~/Content/bootstrap.min.css",
                       "~/Content/set.css",
                       "~/Content/style.css",
-                      "~/Content/Site.css",
-                      //"~/Content/drop-down.css",
-                      "~/Content/toastr.min.css",
-                      "~/Content/Avaliacao.css"));
+                      "~/Content/Site.css",                      
+                      "~/Content/toastr.min.css"));
 
             }
         }

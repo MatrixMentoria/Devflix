@@ -18,7 +18,7 @@
         <span class="text_image"><p>@Html.DisplayFor(modelModel => Model.Title)</p></span>
         <div class="link_filmes">
             <div class="filme_detalhe">
-                <a href="" onclick="abrirDetalhes(@Json.Encode(Model.Title))" data-toggle="modal" title="Ver detalhes" data-target="#@Model.imdbID"><i class="fa fa-info" aria-hidden="true"></i></a>
+                <a href="#" onclick="abrirDetalhes(@Json.Encode(Model.Title), '@Model.imdbID')" title="Ver detalhes"><i class="fa fa-info" aria-hidden="true"></i></a>
             </div>
 
             @if (Request.IsAuthenticated)

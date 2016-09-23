@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")    
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/rating.min.css" rel="stylesheet" />
+    <script src="~/Scripts/rating.min.js"></script>
 </head>
 <body>
 
@@ -24,16 +26,19 @@
                     </div>
                </a>
             </div>
-            @Html.Partial("_LoginPartial")
+            @Html.Partial("_LoginPartial")           
         </div>
     </div>
+
     <div class="container body-content">
+    
         @RenderBody()
     </div>
 
     
     
     @Scripts.Render("~/bundles/bootstrap")
+   
     @RenderSection("scripts", required: false)
 </body>
 </html>

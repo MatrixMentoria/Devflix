@@ -1,0 +1,91 @@
+﻿@model ProjetoFinalWeb.Models.StarsFilmeModel
+
+@{
+    Layout = null;
+    var rate = (int)Model.Rate;
+    var filmeId = Guid.Empty.Equals(Model.FilmeId)? Model.Imdb: Model.FilmeId.ToString();
+    
+}
+
+<div id="f_@filmeId">
+    <ul class="c-rating"></ul> <span>(<span class="countRating"></span> avaliações)</span>
+</div>
+
+<script>
+    // ADD RATING WIDGET
+    var instanceName = "ratingInstance"+"@filmeId";
+
+    window[instanceName] = {};
+    window[instanceName].addRatingWidget = (function (instance){
+        var filmeId = '@filmeId';
+        return function (rate) {
+            var rateElement = document.querySelector("#f_" + filmeId);
+            var ratingElement = rateElement.querySelector('.c-rating');
+            var currentRating = rate;
+            var maxRating = 5;
+            var callback = function(rating) {
+                setFilmeRating(filmeId, rating);
+            };
+            window[instance] = rating(ratingElement, currentRating, maxRating, callback);
+        }
+    }(instanceName));
+
+    function setFilmeRating(filmeId, rating){
+        $.ajax({
+            method: 'post',
+            url: '/Filmes/RatingFilme',
+            data: { filmeId: filmeId, rate: rating  },
+            success: function (data) {
+                if (data.Success){
+                    toastr.success(data.Message, 'Filme avaliado');
+
+                    var rateElement = document.querySelector("#f_" + filmeId);
+                    var countRatingElement = rateElement.querySelector('.countRating');
+
+                    var count = countRatingElement.innerHTML;
+                    countRatingElement.innerHTML = ++count;
+                }
+                else{
+                    toastr.warning(data.Message, 'Filme nao foi avaliado.');
+                    window[instanceName].setRating(data.Rate, false);
+                }
+
+            },
+            error: function (err) {
+                console.log(err);
+                // Display an error toast, with a title
+            }
+        });
+    }
+
+    var getFilmeRating = (function (instance){
+        return function (){
+            $.ajax({
+                method: 'get',
+                url: '/Filmes/GetRatingFilme',
+                data: { filmeId: '@filmeId' },
+                success: function (data) {
+                    if(data.Success){
+                        window[instance].addRatingWidget(data.Rate);
+                        var rateElement = document.querySelector("#f_" + '@filmeId');
+                        var countRatingElement = rateElement.querySelector('.countRating');
+                        countRatingElement.innerHTML = data.CountRating;
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                    // Display an error toast, with a title
+
+                }
+            });
+        }
+    }(instanceName));
+
+
+    if(@rate == 0){
+        getFilmeRating();
+    }else{
+        window[instanceName].addRatingWidget(@rate);
+    }
+
+</script>

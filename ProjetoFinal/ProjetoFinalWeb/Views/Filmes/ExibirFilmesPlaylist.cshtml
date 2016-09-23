@@ -30,6 +30,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.DataInclusao)
         </td>
+        <td>
+            @{
+                Html.RenderPartial("Stars", new ProjetoFinalWeb.Models.StarsFilmeModel
+                {                    
+                    FilmeId = @item.FilmesId,
+                    Imdb = @item.ImdbId
+                });
+            }
+        </td>
     </tr>
 }
 </table>

@@ -36,6 +36,7 @@ namespace ProjetoFinalWeb.Models
         public DbSet<PlaylistModel> Playlists { get; set; }
         public DbSet<PlayListFilmesModel> PlaylistsFilmes{ get; set; }
         public DbSet<FilmesModel> Filmes{ get; set; }
+        public DbSet<FilmeRating> FilmeRatings { get; set; }
 
         public static ApplicationDbContext Create()
         {

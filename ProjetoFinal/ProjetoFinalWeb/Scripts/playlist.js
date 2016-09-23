@@ -1,4 +1,4 @@
-﻿function abrirDetalhes(title) {
+﻿function abrirDetalhes(title, imdb) {
 
     $.ajax({
         method: 'post',
@@ -6,6 +6,7 @@
         data: 'nome=' + title,
         success: function (data) {
             $('.modal-detalhes').html(data);
+            $('#' + imdb).modal('show');
         },
         error: function (err) {
             console.log(err);
