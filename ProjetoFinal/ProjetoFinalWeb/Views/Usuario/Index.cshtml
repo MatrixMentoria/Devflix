@@ -39,10 +39,26 @@
             @Html.DisplayFor(modelItem => item.Titulo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Publica)
+            @if(item.Publica)
+            {
+               <span>Sim</span>
+            }
+            else
+            {
+                <span>Não</span>
+            }
+            @*@Html.DisplayFor(modelItem => item.Publica)*@
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Padrao)
+            @if (item.Padrao)
+            {
+                <span>Sim</span>
+            }
+            else
+            {
+                <span>Não</span>
+            }
+            @*@Html.DisplayFor(modelItem => item.Padrao)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataCriacao)

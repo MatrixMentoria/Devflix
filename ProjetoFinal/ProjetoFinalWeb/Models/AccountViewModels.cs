@@ -69,6 +69,7 @@ namespace ProjetoFinalWeb.Models
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage= "Insira um email válido. Exemplo: zezinho@hotmail.com")]
+        [RegularExpression("^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$",ErrorMessage="Email Inválido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório")]
@@ -93,6 +94,7 @@ namespace ProjetoFinalWeb.Models
         [Required(ErrorMessage ="Campo Obrigatório")]
         [EmailAddress(ErrorMessage ="Insira um email válido. Exemplo: zezinho@hotmail.com")]
         [Display(Name = "Email")]
+        [RegularExpression("^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$", ErrorMessage = "Email Inválido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório")]

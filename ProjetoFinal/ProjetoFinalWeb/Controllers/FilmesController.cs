@@ -176,20 +176,13 @@ namespace ProjetoFinalWeb.Controllers
             }
         }
 
-        /// <summary>
-        /// Método para exibir os filmes contidos na Playlist.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public async Task<ActionResult> ExibirFilmesPlaylist(Guid id)
         {
-            // Recuperando Id do usuário logado
             var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var user = await userManager.FindByEmailAsync(User.Identity.Name);
      
             var filmesPlaylistViewModel = new List<FilmesPlaylistViewModel>();
 
-            // 
             var result = contexto.PlaylistsFilmes.Where(x => x.UsuarioID == user.Id.ToString() && x.PlayListID == id);
             foreach (var item in result)
             {  

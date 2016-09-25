@@ -91,7 +91,7 @@ namespace ProjetoFinalWeb.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Falha ao Logar.");
+                    ModelState.AddModelError("", "Endereço de email ou senha incorretos.");
                     return View(model);
             }
         }
