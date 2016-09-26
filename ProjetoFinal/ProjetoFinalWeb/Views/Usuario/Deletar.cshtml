@@ -1,0 +1,76 @@
+﻿@model ProjetoFinalWeb.Models.PlaylistModel
+
+@{
+    ViewBag.Title = Model.Titulo;
+}
+<h2>@Model.Titulo</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+  
+    @Html.HiddenFor(model => Model.PlayListId)
+    @Html.HiddenFor(model => Model.UsuarioId)
+    @Html.HiddenFor(model => Model.Padrao)
+    @Html.HiddenFor(model => Model.Titulo)
+
+        <h4>Tem certeza que deseja deletar a playlist?</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <dl class="dl-horizontal">
+            <dt>
+            @Html.LabelFor(model => model.DataCriacao)
+            </dt>
+
+            <dd>
+            @Html.DisplayFor(model => model.DataCriacao)
+            </dd>
+
+            <dt>
+            @Html.LabelFor(model => model.Publica)
+            </dt>
+            
+            <dd>
+            @if (Model.Publica)
+            {
+                    <span>Sim</span>
+            }
+            else
+            {
+                    <span>Não</span>
+            }
+            </dd>
+        </dl>
+
+
+        <span class="alert-info">Ao excluir uma playlist você excluirá todos os filmes que ela contém</span>
+        <br />
+        <br />
+        <div id="exibirFilmesPlaylist"></div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Deletar" class="btn btn-default" /> | <a href="\Home\Index">Voltar ao menu principal</a>
+            </div>
+        </div>
+}
+<script>
+    $.ajax({
+        method: 'post',
+        url: '/Filmes/ExibirFilmesPlaylist/' + '@Model.PlayListId',
+        success: function (data) {
+            $('#exibirFilmesPlaylist').html(data);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

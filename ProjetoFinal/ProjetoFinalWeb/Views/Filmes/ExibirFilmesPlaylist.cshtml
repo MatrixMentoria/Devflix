@@ -39,6 +39,26 @@
                 });
             }
         </td>
+
+        <td>
+            <a href="" onclick="ExcluirDaPlaylist('@item.FilmeTitulo','@item.PlayListID')" class="glyphicon glyphicon-remove"></a>
+        </td>
+
     </tr>
 }
 </table>
+
+<script>
+    function ExcluirDaPlaylist(filmetitulo, playlist) {
+
+        $.ajax({
+            method: 'post',
+            url: '/Filmes/ExcluirDaPlaylist',
+            data: { tituloFilme: filmetitulo, IdPlaylist: playlist },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>
+

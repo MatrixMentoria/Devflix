@@ -55,9 +55,13 @@ namespace ProjetoFinalWeb.Controllers
                 DataCriacao = DateTime.Now,
             };
 
-            var existPlaylist = !context.Playlists.Any(x => x.Titulo == play.Titulo);
+            var dontExistPlaylist = !context.Playlists.Any(
+            x => 
+            x.Titulo == play.Titulo &&
+            x.Publica == play.Publica &&
+            x.UsuarioId == user.Id);
 
-            if (existPlaylist)
+            if (dontExistPlaylist)
             {
                 context.Playlists.Add(playlist);
                 await context.SaveChangesAsync();
@@ -66,15 +70,15 @@ namespace ProjetoFinalWeb.Controllers
             {
                 ViewBag.Erro = string.Format("Playlist {0} já existente!", play.Titulo);
                 return PartialView("ErroPlaylistExistente");
+
                 //return Json(new
                 //{
                 //    Success = false,
                 //    Message = string.Format("A Playlist {0} já existe.", play.Titulo)
-                //    //ajustar com layout padrao do erro do sistema
                 //});
 
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
 
 
@@ -83,7 +87,7 @@ namespace ProjetoFinalWeb.Controllers
         {
             if (id == null)
             {
-                context.Dispose();
+                //context.Dispose();
                 return HttpNotFound();
             }
 
@@ -91,7 +95,7 @@ namespace ProjetoFinalWeb.Controllers
 
             if (play == null)
             {
-                context.Dispose();
+                //context.Dispose();
                 return HttpNotFound();
             }
 
@@ -128,6 +132,38 @@ namespace ProjetoFinalWeb.Controllers
             catch (DataException)
             {
                 ViewBag.Erro = "Não consiguimos alterar a playlist";
+            }
+            return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> Deletar(Guid? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var playlistToDelete = context.Playlists.Find(id);
+
+            if(playlistToDelete == null)
+            {
+                return HttpNotFound();
+            }
+            return View(playlistToDelete);
+        }
+
+
+        [HttpPost, ActionName("Deletar")]
+        public async Task<ActionResult> DeletarPlaylist(PlaylistModel play)
+        {
+            try
+            {
+                context.Entry(play).State = EntityState.Deleted;
+                await context.SaveChangesAsync();
+            }
+            catch (DataException)
+            {
+                ViewBag.Erro = "Não consiguimos deletar a playlist";
             }
             return RedirectToAction("Index");
         }

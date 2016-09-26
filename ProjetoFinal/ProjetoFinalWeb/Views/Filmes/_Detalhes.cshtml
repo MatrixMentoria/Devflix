@@ -20,7 +20,6 @@
             <div class="filme_detalhe">
                 <a href="#" onclick="abrirDetalhes(@Json.Encode(Model.Title), '@Model.imdbID')" title="Ver detalhes"><i class="fa fa-info" aria-hidden="true"></i></a>
             </div>
-
             @if (Request.IsAuthenticated)
             {                             
                 <div class="btn-group">
@@ -36,7 +35,10 @@
                             var pessoas = contexto.Users.First(lambda => lambda.Email == Email);
 
                             // #Ver depois pro mentor não reclamar <3 LINQ
-                            var lista = contexto.Playlists.Where(lambda => lambda.UsuarioId == pessoas.Id || lambda.Titulo == "Ver depois").ToList();
+                            var lista = contexto.Playlists.Where(
+                            lambda => lambda.UsuarioId == pessoas.Id ||
+                            lambda.Titulo == "Ver depois"
+                            ).ToList();
 
                             foreach (var item in lista)
                             {
@@ -45,11 +47,11 @@
                                 </li>
                             }
                         }
+                        }
 
                     </ul>
                 </div>
             }
         </div>
-
     </li>
 }

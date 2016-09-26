@@ -301,34 +301,15 @@ namespace ProjetoFinalWeb.Controllers
             
             return Json(new { Rate = average, Success = true, CountRating = ratingCount }, JsonRequestBehavior.AllowGet);
         }
+
+        public async Task<ActionResult> ExcluirDaPlaylist(string tituloFilme, Guid IdPlaylist)
+        {
+            return RedirectToAction("Index","Home");
+        }   
     }
 
-    //O modo antigo, só com uma playlist
 
-    /*public async Task<ActionResult> AdicionarNaPlaylist(string TituloFilme)
-    {
-        FilmesModel filmes = new FilmesModel();
-        ApplicationUser usuario = new ApplicationUser();
-        PlaylistModel playlist = new PlaylistModel();
 
-        using (var context = new ApplicationDbContext())
-        {
-            if (!context.PlaylistsFilmes.Any(lambda => TituloFilme == lambda.FilmeTitulo))
-            {
-                PlayListFilmesModel play = new PlayListFilmesModel
-                {
-                    DataInclusao = DateTime.Now,
-                    FilmeTitulo = TituloFilme,
-                    FilmeID = filmes.Id,
-                    UsuarioID = usuario.Id,
-                    PlayListID = playlist.PlaylistId
-                };
 
-                context.PlaylistsFilmes.Add(play);
-                await context.SaveChangesAsync();
-            }
-            return View();
-        }
-    }*/
 }
 

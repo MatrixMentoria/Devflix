@@ -214,7 +214,7 @@
     <Compile Include="Models\FilmesModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PlayListFilmesModel.cs" />
+    <Compile Include="Models\PlaylistFilmesModel.cs" />
     <Compile Include="Models\PlaylistModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\OMDService.cs" />
@@ -378,6 +378,7 @@
     <Content Include="Views\Usuario\ErroPlaylistExistente.cshtml" />
     <Content Include="Views\Filmes\DropUpPlaylistsView.cshtml" />
     <Content Include="Views\Filmes\Stars.cshtml" />
+    <Content Include="Views\Usuario\Deletar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

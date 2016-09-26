@@ -68,7 +68,8 @@
         {
         <td>
             @Html.ActionLink("Detalhes", "Detalhes", new { id = item.PlayListId }) |
-            @Html.ActionLink("Editar Configurações", "Editar", new { id = item.PlayListId })
+            @Html.ActionLink("Editar Configurações", "Editar", new { id = item.PlayListId }) |
+            @Html.ActionLink("Deletar Playlist","Deletar",new { id= item.PlayListId})
         </td>
         }
         else
